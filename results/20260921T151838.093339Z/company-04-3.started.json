@@ -1,0 +1,9 @@
+{
+  "case_id": "company-04-3",
+  "question": "Investigate the largest positive account contribution to the Q1-to-Q2 profit change. Compare corresponding months across the quarters and identify the biggest contributing month.",
+  "run_id": "c4831ddb-3ab6-41e3-9015-c39ccbb0f2ff",
+  "attempt_id": "c4831ddb-3ab6-41e3-9015-c39ccbb0f2ff",
+  "evaluation_id": "7ad36035-8005-471e-a9a2-9d48d660ba8c",
+  "human_review": null,
+  "started_at": "2026-09-21T15:19:15.061797+00:00"
+}

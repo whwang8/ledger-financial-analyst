@@ -13,7 +13,7 @@ const final = {
   decision: 'answer',
   summary: 'Profit was positive.',
   findings: [
-    { text: 'Q2 operating profit is $19,000.', evidence_ids: [factId] },
+    { kind:'financial', text: 'Operating profit is positive in the selected quarter.', evidence_ids: [factId] },
   ],
   limitations: [],
   suggested_questions: [],

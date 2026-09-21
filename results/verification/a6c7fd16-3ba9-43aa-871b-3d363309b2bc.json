@@ -1,0 +1,11 @@
+{
+  "id": "a6c7fd16-3ba9-43aa-871b-3d363309b2bc",
+  "verified_at": "2026-09-21T15:27:56.903706+00:00",
+  "dataset_id": "apple-fy2025",
+  "source_hash": "ce3aa94ff6e1daaee9989d1f5d0c060086f4c7267b84b1e564d9051f580ca0bf",
+  "engine_hash": "96fb785123b45f8cd03ea1e6820a1e2f8305ca5d8c7fc40aebc93626e3418752",
+  "stored_source_hash": "ce3aa94ff6e1daaee9989d1f5d0c060086f4c7267b84b1e564d9051f580ca0bf",
+  "matches_stored_facts": true,
+  "different_groups": [],
+  "scope": "Recomputation consistency, not independent financial correctness."
+}

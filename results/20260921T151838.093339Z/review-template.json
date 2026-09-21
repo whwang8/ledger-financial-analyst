@@ -1,0 +1,110 @@
+[
+  {
+    "case_id": "company-04-1",
+    "run_id": "c09cb19e-5ed0-443a-b68d-fdc58ddd52e1",
+    "task_complete": null,
+    "numbers_correct": null,
+    "claims_supported": null,
+    "uncertainty_handled": null,
+    "notes": ""
+  },
+  {
+    "case_id": "company-04-2",
+    "run_id": "18bbdf82-06cf-4a01-ad83-cdad446c9b75",
+    "task_complete": null,
+    "numbers_correct": null,
+    "claims_supported": null,
+    "uncertainty_handled": null,
+    "notes": ""
+  },
+  {
+    "case_id": "company-04-3",
+    "run_id": "c4831ddb-3ab6-41e3-9015-c39ccbb0f2ff",
+    "task_complete": null,
+    "numbers_correct": null,
+    "claims_supported": null,
+    "uncertainty_handled": null,
+    "notes": ""
+  },
+  {
+    "case_id": "company-04-4",
+    "run_id": "71ce6cb4-179a-44a8-b8ad-846733df12e9",
+    "task_complete": null,
+    "numbers_correct": null,
+    "claims_supported": null,
+    "uncertainty_handled": null,
+    "notes": ""
+  },
+  {
+    "case_id": "company-05-1",
+    "run_id": "15139069-a144-440a-8175-6ac6b0fdc306",
+    "task_complete": null,
+    "numbers_correct": null,
+    "claims_supported": null,
+    "uncertainty_handled": null,
+    "notes": ""
+  },
+  {
+    "case_id": "company-05-2",
+    "run_id": "4e6e64b7-df8a-488f-ac3a-1830df900201",
+    "task_complete": null,
+    "numbers_correct": null,
+    "claims_supported": null,
+    "uncertainty_handled": null,
+    "notes": ""
+  },
+  {
+    "case_id": "company-05-3",
+    "run_id": "f8cdbbd8-9ace-4eb5-871d-80bedfd3bb0a",
+    "task_complete": null,
+    "numbers_correct": null,
+    "claims_supported": null,
+    "uncertainty_handled": null,
+    "notes": ""
+  },
+  {
+    "case_id": "company-05-4",
+    "run_id": "26a2c694-5957-4aac-9dba-7ea9f3f008e1",
+    "task_complete": null,
+    "numbers_correct": null,
+    "claims_supported": null,
+    "uncertainty_handled": null,
+    "notes": ""
+  },
+  {
+    "case_id": "company-06-1",
+    "run_id": "de7ab269-e5ee-4101-b55d-a6bfcd63a134",
+    "task_complete": null,
+    "numbers_correct": null,
+    "claims_supported": null,
+    "uncertainty_handled": null,
+    "notes": ""
+  },
+  {
+    "case_id": "company-06-2",
+    "run_id": "2a3d85f0-51bf-4486-bebd-1aec4af19260",
+    "task_complete": null,
+    "numbers_correct": null,
+    "claims_supported": null,
+    "uncertainty_handled": null,
+    "notes": ""
+  },
+  {
+    "case_id": "company-06-3",
+    "run_id": "37f05480-f2b6-44fc-b092-d36eac73f30e",
+    "task_complete": null,
+    "numbers_correct": null,
+    "claims_supported": null,
+    "uncertainty_handled": null,
+    "notes": ""
+  },
+  {
+    "case_id": "company-06-4",
+    "run_id": "743c44bf-a0fb-4a8e-80da-c5015cd842ff",
+    "task_complete": null,
+    "numbers_correct": null,
+    "claims_supported": null,
+    "uncertainty_handled": null,
+    "notes": ""
+  }
+]

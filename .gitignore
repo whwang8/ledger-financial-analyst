@@ -43,3 +43,6 @@ __pycache__/
 
 /.test-build/
 *.tsbuildinfo
+
+/.ledger-data/
+/.sites-runtime/

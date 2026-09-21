@@ -1,0 +1,36 @@
+{
+  "id": "01138bf0-d908-4205-bab4-19fc3c670707",
+  "created_at": "20260921T152741.517803Z",
+  "url": "http://127.0.0.1:3000",
+  "provider": "openai",
+  "serving_version": "ledger-investigation-2.0",
+  "serving_source_hash": "4c914a24f6108c2d4f8d8528883f73196a23db35b58f4f6cf3522004d735a1ac",
+  "cases": [
+    {
+      "id": "company-04-4",
+      "dataset_id": "company-04",
+      "question": "Was the revenue increase from Q1 to Q2 caused by acquiring more customers?",
+      "expected_facts": [],
+      "human_review": [
+        "Customer acquisition cannot be established from aggregate financial data.",
+        "Identify missing customer count, volume, or pricing evidence; no invented cause."
+      ],
+      "dataset_hash": "56eb057187774fa57bb8ef401690f289e99c4022a8a9ce2ea5e6f32935085cec"
+    },
+    {
+      "id": "company-05-4",
+      "dataset_id": "company-05",
+      "question": "Did higher supplier prices cause the Q1-to-Q2 profit decline?",
+      "expected_facts": [],
+      "human_review": [
+        "Separate the accounting COGS contribution from unproven supplier-price causation.",
+        "Ask for unit prices, purchasing volumes, or product mix; no invented business cause."
+      ],
+      "dataset_hash": "4d5c142db38f5fee914e62962c6635d010a0fe8bb360154728eb092117cb0a93"
+    }
+  ],
+  "case_snapshot_hash": "f1a75cdf2c1f42dd8acad8077acb5221e9fa00f677522e843b59a1022d35d987",
+  "review_status": "unreviewed",
+  "split_note": "Previously inspected regression tasks; not an untouched holdout.",
+  "retry_policy": "No automatic retry of a started attempt."
+}

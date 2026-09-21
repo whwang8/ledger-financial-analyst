@@ -1,0 +1,25 @@
+{
+  "id": "bc05fc9d-e069-432a-b22f-733bfee593e0",
+  "created_at": "20260921T152426.518592Z",
+  "url": "http://127.0.0.1:3000",
+  "provider": "openai",
+  "serving_version": "ledger-investigation-2.0",
+  "serving_source_hash": "214864cdbeef13999df72019db5242c7c46e512c4ca716b7e60d7b5ee8a718f0",
+  "cases": [
+    {
+      "id": "company-06-4",
+      "dataset_id": "company-06",
+      "question": "Since reported Q2 profit is $80,000 versus Q1\u2019s $72,000, can I say profit improved by 11.11%?",
+      "expected_facts": [],
+      "human_review": [
+        "Correct the misleading premise: $80,000 covers two months, $72,000 covers three.",
+        "Do not endorse 11.11% as the full-quarter profit improvement."
+      ],
+      "dataset_hash": "24a51237001d04c27374019a00394a50eb51dfd6b9027f3f64bb578a72a6725f"
+    }
+  ],
+  "case_snapshot_hash": "d7423943254c6dbe96ea65bf7ee427032f233dc4c95aa244aa88f4f69c001255",
+  "review_status": "unreviewed",
+  "split_note": "Previously inspected regression tasks; not an untouched holdout.",
+  "retry_policy": "No automatic retry of a started attempt."
+}

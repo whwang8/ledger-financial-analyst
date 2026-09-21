@@ -1,5 +1,7 @@
 # Validation record
 
+Current investigation-workspace checks and limitations are recorded in [Investigation v2 validation](investigation-v2-validation.md). The record below describes the original September 20 release; it is retained as historical evidence.
+
 Validated on September 20, 2026 (America/New_York).
 
 - Python: 15 independent arithmetic, data-validation, and generator tests passed.

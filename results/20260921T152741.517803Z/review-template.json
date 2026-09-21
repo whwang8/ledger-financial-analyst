@@ -1,0 +1,20 @@
+[
+  {
+    "case_id": "company-04-4",
+    "run_id": "1c32d5b0-9752-4138-99f6-45c6f6860f37",
+    "task_complete": null,
+    "numbers_correct": null,
+    "claims_supported": null,
+    "uncertainty_handled": null,
+    "notes": ""
+  },
+  {
+    "case_id": "company-05-4",
+    "run_id": "5851bd15-5daa-4ce0-bf76-f8c1ef7a1a4e",
+    "task_complete": null,
+    "numbers_correct": null,
+    "claims_supported": null,
+    "uncertainty_handled": null,
+    "notes": ""
+  }
+]

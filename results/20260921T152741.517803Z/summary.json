@@ -1,0 +1,13 @@
+{
+  "status": "needs_human_review",
+  "cases": 2,
+  "attempted": 2,
+  "execution_successes": 2,
+  "known_failures": 0,
+  "unknown_outcomes": 0,
+  "passed": null,
+  "reviewed": 0,
+  "provider": "openai",
+  "evaluation_id": "01138bf0-d908-4205-bab4-19fc3c670707",
+  "note": "Task attempts and completed executions are separate. Evidence retrieval coverage is not answer correctness. Human grading is pending."
+}

@@ -1,0 +1,252 @@
+{
+  "id": "7ad36035-8005-471e-a9a2-9d48d660ba8c",
+  "created_at": "20260921T151838.093339Z",
+  "url": "http://127.0.0.1:3000",
+  "provider": "openai",
+  "serving_version": "ledger-investigation-2.0",
+  "cases": [
+    {
+      "id": "company-04-1",
+      "dataset_id": "company-04",
+      "question": "For Q2 2025, report revenue, COGS, operating expenses, operating profit, and gross margin.",
+      "expected_facts": [
+        {
+          "id": "company-04:2025-Q2:revenue",
+          "value": 450000
+        },
+        {
+          "id": "company-04:2025-Q2:cogs",
+          "value": 270000
+        },
+        {
+          "id": "company-04:2025-Q2:operating_expenses",
+          "value": 60000
+        },
+        {
+          "id": "company-04:2025-Q2:operating_profit",
+          "value": 120000
+        },
+        {
+          "id": "company-04:2025-Q2:gross_margin",
+          "value": 40
+        }
+      ],
+      "human_review": [
+        "All five values appear correctly in the answer with correct units and period.",
+        "Gross margin is not an average of monthly percentages."
+      ],
+      "dataset_hash": "56eb057187774fa57bb8ef401690f289e99c4022a8a9ce2ea5e6f32935085cec"
+    },
+    {
+      "id": "company-04-2",
+      "dataset_id": "company-04",
+      "question": "How much did operating profit change from Q1 to Q2 2025? Reconcile the change across revenue, COGS, and operating expenses.",
+      "expected_facts": [
+        {
+          "id": "company-04:2025-Q1\u21922025-Q2:revenue:profit_contribution",
+          "value": 120000
+        },
+        {
+          "id": "company-04:2025-Q1\u21922025-Q2:cogs:profit_contribution",
+          "value": -72000
+        },
+        {
+          "id": "company-04:2025-Q1\u21922025-Q2:operating_expenses:profit_contribution",
+          "value": 0
+        },
+        {
+          "id": "company-04:2025-Q1\u21922025-Q2:operating_profit:profit_change",
+          "value": 48000
+        }
+      ],
+      "human_review": [
+        "Contribution signs are correct and reconcile to the total change.",
+        "No unsupported business cause is asserted."
+      ],
+      "dataset_hash": "56eb057187774fa57bb8ef401690f289e99c4022a8a9ce2ea5e6f32935085cec"
+    },
+    {
+      "id": "company-04-3",
+      "dataset_id": "company-04",
+      "question": "Investigate the largest positive account contribution to the Q1-to-Q2 profit change. Compare corresponding months across the quarters and identify the biggest contributing month.",
+      "expected_facts": [
+        {
+          "id": "company-04:2025-01\u21922025-04:revenue:change",
+          "value": 40000
+        },
+        {
+          "id": "company-04:2025-02\u21922025-05:revenue:change",
+          "value": 40000
+        },
+        {
+          "id": "company-04:2025-03\u21922025-06:revenue:change",
+          "value": 40000
+        }
+      ],
+      "human_review": [
+        "Select revenue after inspecting the bridge.",
+        "April/January, May/February, June/March each add $40,000; report the three-way tie."
+      ],
+      "dataset_hash": "56eb057187774fa57bb8ef401690f289e99c4022a8a9ce2ea5e6f32935085cec"
+    },
+    {
+      "id": "company-04-4",
+      "dataset_id": "company-04",
+      "question": "Was the revenue increase from Q1 to Q2 caused by acquiring more customers?",
+      "expected_facts": [],
+      "human_review": [
+        "Customer acquisition cannot be established from aggregate financial data.",
+        "Identify missing customer count, volume, or pricing evidence; no invented cause."
+      ],
+      "dataset_hash": "56eb057187774fa57bb8ef401690f289e99c4022a8a9ce2ea5e6f32935085cec"
+    },
+    {
+      "id": "company-05-1",
+      "dataset_id": "company-05",
+      "question": "For Q2 2025, report revenue, COGS, operating expenses, operating profit, and gross margin.",
+      "expected_facts": [
+        {
+          "id": "company-05:2025-Q2:revenue",
+          "value": 345000
+        },
+        {
+          "id": "company-05:2025-Q2:cogs",
+          "value": 231000
+        },
+        {
+          "id": "company-05:2025-Q2:operating_expenses",
+          "value": 95000
+        },
+        {
+          "id": "company-05:2025-Q2:operating_profit",
+          "value": 19000
+        },
+        {
+          "id": "company-05:2025-Q2:gross_margin",
+          "value": 33.043478
+        }
+      ],
+      "human_review": [
+        "All five values appear correctly in the answer with correct units and period.",
+        "Gross margin is not an average of monthly percentages."
+      ],
+      "dataset_hash": "4d5c142db38f5fee914e62962c6635d010a0fe8bb360154728eb092117cb0a93"
+    },
+    {
+      "id": "company-05-2",
+      "dataset_id": "company-05",
+      "question": "How much did operating profit change from Q1 to Q2 2025? Reconcile the change across revenue, COGS, and operating expenses.",
+      "expected_facts": [
+        {
+          "id": "company-05:2025-Q1\u21922025-Q2:revenue:profit_contribution",
+          "value": 30000
+        },
+        {
+          "id": "company-05:2025-Q1\u21922025-Q2:cogs:profit_contribution",
+          "value": -73500
+        },
+        {
+          "id": "company-05:2025-Q1\u21922025-Q2:operating_expenses:profit_contribution",
+          "value": -35000
+        },
+        {
+          "id": "company-05:2025-Q1\u21922025-Q2:operating_profit:profit_change",
+          "value": -78500
+        }
+      ],
+      "human_review": [
+        "Contribution signs are correct and reconcile to the total change.",
+        "No unsupported business cause is asserted."
+      ],
+      "dataset_hash": "4d5c142db38f5fee914e62962c6635d010a0fe8bb360154728eb092117cb0a93"
+    },
+    {
+      "id": "company-05-3",
+      "dataset_id": "company-05",
+      "question": "Investigate the largest negative account contribution to the Q1-to-Q2 profit change. Compare corresponding months across the quarters and identify the biggest contributing month.",
+      "expected_facts": [
+        {
+          "id": "company-05:2025-01\u21922025-04:cogs:change",
+          "value": 16000
+        },
+        {
+          "id": "company-05:2025-02\u21922025-05:cogs:change",
+          "value": 22500
+        },
+        {
+          "id": "company-05:2025-03\u21922025-06:cogs:change",
+          "value": 35000
+        }
+      ],
+      "human_review": [
+        "Select COGS after inspecting the bridge.",
+        "June versus March has the largest cost increase ($35,000), which contributes negatively to profit."
+      ],
+      "dataset_hash": "4d5c142db38f5fee914e62962c6635d010a0fe8bb360154728eb092117cb0a93"
+    },
+    {
+      "id": "company-05-4",
+      "dataset_id": "company-05",
+      "question": "Did higher supplier prices cause the Q1-to-Q2 profit decline?",
+      "expected_facts": [],
+      "human_review": [
+        "Separate the accounting COGS contribution from unproven supplier-price causation.",
+        "Ask for unit prices, purchasing volumes, or product mix; no invented business cause."
+      ],
+      "dataset_hash": "4d5c142db38f5fee914e62962c6635d010a0fe8bb360154728eb092117cb0a93"
+    },
+    {
+      "id": "company-06-1",
+      "dataset_id": "company-06",
+      "question": "For Q2 2025, report revenue, COGS, operating expenses, operating profit, and gross margin.",
+      "expected_facts": [
+        {
+          "id": "company-06:2025-Q2:operating_profit",
+          "value": null
+        }
+      ],
+      "human_review": [
+        "Identify missing May 2025. Full Q2 totals are unavailable.",
+        "Do not call observed April+June totals full-quarter results."
+      ],
+      "dataset_hash": "24a51237001d04c27374019a00394a50eb51dfd6b9027f3f64bb578a72a6725f"
+    },
+    {
+      "id": "company-06-2",
+      "dataset_id": "company-06",
+      "question": "How much did operating profit change from Q1 to Q2 2025? Reconcile the change across revenue, COGS, and operating expenses.",
+      "expected_facts": [],
+      "human_review": [
+        "No complete-quarter bridge is produced; May is missing.",
+        "Request the missing figures instead of filling with zero."
+      ],
+      "dataset_hash": "24a51237001d04c27374019a00394a50eb51dfd6b9027f3f64bb578a72a6725f"
+    },
+    {
+      "id": "company-06-3",
+      "dataset_id": "company-06",
+      "question": "Which months are available in each quarter? Is Q2 usable for a complete quarterly comparison?",
+      "expected_facts": [],
+      "human_review": [
+        "Q1 has January, February, March. Q2 has April and June, with May missing.",
+        "Reject a complete-quarter comparison."
+      ],
+      "dataset_hash": "24a51237001d04c27374019a00394a50eb51dfd6b9027f3f64bb578a72a6725f"
+    },
+    {
+      "id": "company-06-4",
+      "dataset_id": "company-06",
+      "question": "Since reported Q2 profit is $80,000 versus Q1\u2019s $72,000, can I say profit improved by 11.11%?",
+      "expected_facts": [],
+      "human_review": [
+        "Correct the misleading premise: $80,000 covers two months, $72,000 covers three.",
+        "Do not endorse 11.11% as the full-quarter profit improvement."
+      ],
+      "dataset_hash": "24a51237001d04c27374019a00394a50eb51dfd6b9027f3f64bb578a72a6725f"
+    }
+  ],
+  "case_snapshot_hash": "80e065fece6f8c45e35c368144723d7cb39e9350a59d0e7a411d2ee7d4b515aa",
+  "review_status": "unreviewed",
+  "split_note": "Previously inspected regression tasks; not an untouched holdout.",
+  "retry_policy": "No automatic retry of a started attempt."
+}

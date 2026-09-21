@@ -277,7 +277,7 @@ export default function Ledger({ datasets }: { datasets: Dataset[] }) {
           ledger<span className="brand-caption">Financial analyst</span>
         </Link>
         <div className="header-right">
-          <span className="badge">Synthetic data</span>
+          <Link className="text-link" style={{margin:0}} href="/investigations">Investigations & reports <ArrowUpRight size={16}/></Link>
           <a
             href="https://github.com/whwang8"
             target="_blank"
@@ -725,10 +725,12 @@ export default function Ledger({ datasets }: { datasets: Dataset[] }) {
                     </span>
                   </div>
                   <h3 className="answer-summary">{run.analysis.summary}</h3>
+                  <Link className="text-link" href={`/investigations?run=${run.id}`}>Inspect sources, calculations and model calls →</Link>
                   <div className="findings">
                     {run.analysis.findings.map((f, i) => (
                       <div className="finding" key={i}>
                         <p>{f.text}</p>
+                        {f.kind === 'financial' && <div className="bound-values">{f.evidence_ids.map(id=>{const v=run.facts.find(x=>x.id===id);return v ? <p key={id}>{metricLabel(v.metric)} · {v.period}: <strong>{displayFact(v)}</strong></p>:null;})}</div>}
                         <div className="citations">
                           {f.evidence_ids.map((id) => {
                             const fact = run.facts.find((f) => f.id === id);

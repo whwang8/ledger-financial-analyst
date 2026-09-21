@@ -2,6 +2,7 @@ import { sites } from '@openai/sites-vite-plugin';
 import tailwindcss from '@tailwindcss/postcss';
 import vinext from 'vinext';
 import { defineConfig, loadEnv } from 'vite';
+import { resolve } from 'node:path';
 import hostingConfig from './.openai/hosting.json' with { type: 'json' };
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
@@ -61,6 +62,17 @@ export default defineConfig(async ({ command, mode }) => {
   const { cloudflare } = await import('@cloudflare/vite-plugin');
 
   return {
+    resolve:
+      command === 'serve'
+        ? {
+            alias: {
+              'cloudflare:workers': resolve(
+                process.cwd(),
+                'lib/cloudflare-local.ts',
+              ),
+            },
+          }
+        : undefined,
     css: { postcss: { plugins: [tailwindcss()] } },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }

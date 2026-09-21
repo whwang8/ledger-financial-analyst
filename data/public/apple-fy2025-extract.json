@@ -1,0 +1,60 @@
+{
+  "status": "research_verified_against_official_filing",
+  "company": "Apple Inc.",
+  "cik": "0000320193",
+  "accession": "0000320193-25-000079",
+  "filingDate": "2025-10-31",
+  "form": "10-K",
+  "sourceUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+  "sourceUnit": "USD millions",
+  "scaleToUsd": 1000000,
+  "periods": {
+    "FY2025": {"start": "2024-09-29", "end": "2025-09-27", "weeks": 52},
+    "FY2024": {"start": "2023-10-01", "end": "2024-09-28", "weeks": 52}
+  },
+  "startDateMethod": "Derived from disclosed annual end dates and 52-week durations; raw XBRL contexts were not retrieved.",
+  "valueOrder": ["FY2025", "FY2024"],
+  "operationsPage": 29,
+  "reported": {
+    "revenue": [416161, 391035],
+    "costOfSales": [220960, 210352],
+    "operatingExpenses": [62151, 57467],
+    "netIncome": [112010, 93736],
+    "cashFromOperations": [111482, 118254],
+    "cashPpePurchasesPositiveOutflow": [12715, 9447]
+  },
+  "cashFlowPage": 33,
+  "signedNetIncomeToCfoAdjustments": {
+    "depreciationAmortization": [11698, 11445],
+    "shareBasedCompensationExpense": [12863, 11688],
+    "otherAdjustments": [-89, -2266],
+    "accountsReceivableNetChange": [-6682, -3788],
+    "vendorNonTradeReceivablesChange": [-347, -1356],
+    "inventoryChange": [1400, -1046],
+    "otherCurrentNoncurrentAssetsChange": [-9197, -11731],
+    "accountsPayableChange": [902, 6020],
+    "otherCurrentNoncurrentLiabilitiesChange": [-11076, 15552]
+  },
+  "computedAssertions": {
+    "adjustmentSum": [-528, 24518],
+    "netIncomePlusAdjustments": [111482, 118254],
+    "cfoMinusNetIncome": [-528, 24518],
+    "unexplainedResidual": [0, 0],
+    "cfoLessCashPpePurchases": [98767, 108807]
+  },
+  "managementEvidence": {
+    "section": "Item 7, Products and Services Performance, iPhone",
+    "page": 23,
+    "quote": "iPhone net sales increased during 2025 compared to 2024 due to higher net sales of Pro models.",
+    "sourceUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm#:~:text=iPhone%20net%20sales%20increased%20during%202025",
+    "evidenceType": "management_attributed_explanation",
+    "limitations": "Not an independently established causal effect or quantified price-volume bridge."
+  },
+  "implementationNotes": [
+    "Values above are millions. Convert once if the application stores USD.",
+    "Cash-flow adjustment signs are contributions to CFO, not raw balance-sheet changes.",
+    "PP&E purchases are positive outflow magnitudes here; the statement displays negative cash flows.",
+    "The CFO bridge Other row remains a disclosed aggregated category even with zero arithmetic residual.",
+    "Do not insert annual values into monthly or calendar-quarter slots."
+  ]
+}

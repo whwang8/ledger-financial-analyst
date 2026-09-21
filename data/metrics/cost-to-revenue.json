@@ -1,0 +1,13 @@
+{
+  "id": "cost_to_revenue_ratio",
+  "version": "1.0",
+  "name": "Cost to revenue ratio",
+  "meaning": "Share of revenue consumed by cost of sales and operating expenses, before interest and tax.",
+  "unit": "percent",
+  "formula": "(sum(cogs) + sum(operating_expenses)) / sum(revenue) * 100",
+  "expression": {"op":"ratio_percent","numerator":{"op":"add","inputs":[{"op":"account","name":"cogs"},{"op":"account","name":"operating_expenses"}]},"denominator":{"op":"account","name":"revenue"}},
+  "missing_policy": "Unavailable if any expected period is absent.",
+  "denominator_policy": "Unavailable if aggregate revenue is zero or negative.",
+  "rounding": "Python Decimal; six decimal places in stored facts, two for display.",
+  "golden": {"revenue":100,"cogs":40,"operating_expenses":20,"expected":60}
+}

@@ -2,8 +2,10 @@
 from decimal import Decimal, ROUND_HALF_UP
 import hashlib
 import json
+from pathlib import Path
+from .metrics import DEFINITION, evaluate
 
-METRICS = ('revenue', 'cogs', 'operating_expenses', 'gross_profit', 'operating_profit', 'gross_margin', 'operating_margin')
+METRICS = ('revenue', 'cogs', 'operating_expenses', 'gross_profit', 'operating_profit', 'gross_margin', 'operating_margin', 'cost_to_revenue_ratio')
 FORMULAS = {
  'revenue': 'sum(revenue)', 'cogs': 'sum(cogs)', 'operating_expenses': 'sum(operating_expenses)',
  'gross_profit': 'sum(revenue) - sum(cogs)',
@@ -11,6 +13,7 @@ FORMULAS = {
  'gross_margin': '(sum(revenue) - sum(cogs)) / sum(revenue) * 100',
  'operating_margin': '(sum(revenue) - sum(cogs) - sum(operating_expenses)) / sum(revenue) * 100',
 }
+FORMULAS['cost_to_revenue_ratio']=DEFINITION['formula']
 MONTHS = [f'2025-{i:02}' for i in range(1, 7)]
 PERIODS = {**{m:[m] for m in MONTHS}, '2025-Q1': MONTHS[:3], '2025-Q2': MONTHS[3:], '2025-H1': MONTHS}
 
@@ -40,11 +43,12 @@ def aggregate(rows, expected_months):
     v['operating_profit']=v['gross_profit']-v['operating_expenses']
     for k in ('gross','operating'):
         v[k+'_margin']=v[k+'_profit']/v['revenue']*100 if v['revenue']>0 else None
+    v['cost_to_revenue_ratio']=evaluate(DEFINITION['expression'],v)
     return v, missing, selected
 
 def fact(dataset, period, metric, value, formula, rows, unit=None, reason=None, suffix=''):
     return {'id':f'{dataset}:{period}:{metric}{suffix}', 'dataset_id':dataset, 'period':period, 'metric':metric,
-            'value':number(value), 'unit':unit or ('percent' if 'margin' in metric else 'USD'),
+            'value':number(value), 'unit':unit or ('percent' if 'margin' in metric or metric=='cost_to_revenue_ratio' else 'USD'),
             'formula':formula, 'source_row_ids':[r['row_id'] for r in rows], 'reason':reason}
 
 def compile_dataset(source):
@@ -67,9 +71,9 @@ def compile_dataset(source):
                 x,y=raw[a][k],raw[b][k]
                 delta=y-x if both and x is not None and y is not None else None
                 reason='Incomplete or undefined comparison' if delta is None else None
-                unit='percentage_points' if 'margin' in k else 'USD'
+                unit='percentage_points' if 'margin' in k or k=='cost_to_revenue_ratio' else 'USD'
                 facts.append(fact(did,key,k,delta,f'{k}({b}) - {k}({a})',selected,unit,reason,':change'))
-                if 'margin' not in k:
+                if 'margin' not in k and k!='cost_to_revenue_ratio':
                     pct=(y-x)/x*100 if both and x is not None and y is not None and x>0 else None
                     facts.append(fact(did,key,k,pct,f'({k}({b}) - {k}({a})) / {k}({a}) * 100',selected,'percent',None if pct is not None else 'Percentage change unavailable: incomplete period or nonpositive baseline.',':percent_change'))
             comparisons[key]={'complete':both,'missing_months':missing,'facts':facts}
@@ -80,4 +84,20 @@ def compile_dataset(source):
             total=raw[b]['operating_profit']-raw[a]['operating_profit'] if both else None
             contributions.append(fact(did,key,'operating_profit',total,'change(revenue) - change(cogs) - change(operating_expenses)',selected,'USD',None if both else 'Incomplete period',':profit_change'))
             bridges[key]={'complete':both,'missing_months':missing,'facts':contributions}
-    return {**source,'sha256':hashlib.sha256(json.dumps(rows,sort_keys=True).encode()).hexdigest(), 'periods':periods,'comparisons':comparisons,'bridges':bridges}
+    engine_source=Path(__file__).read_text()
+    metric_source=Path(__file__).with_name('metrics.py').read_text()
+    engine_hash=hashlib.sha256((engine_source+metric_source+json.dumps(DEFINITION,sort_keys=True)).encode()).hexdigest()
+    for group in (periods,comparisons,bridges):
+        for key,pack in group.items():
+            for f in pack['facts']:
+                if '→' in key:
+                    a,b=key.split('→');metric=f['metric'];inputs=[]
+                    for p in (a,b): inputs.append({'label':metric+' · '+p,'value':number(raw[p][metric]),'unit':'percent' if 'margin' in metric or metric=='cost_to_revenue_ratio' else 'USD','fact_id':f'{did}:{p}:{metric}'})
+                    expected=PERIODS[a]+PERIODS[b]
+                else:
+                    selected=[r for r in rows if r['month'] in PERIODS[key]]
+                    accounts=[f['metric']] if f['metric'] in METRICS[:3] else list(METRICS[:3])
+                    inputs=[{'label':account+' · observed rows','value':number(sum((Decimal(str(r[account])) for r in selected),Decimal(0))),'unit':'USD'} for account in accounts]
+                    expected=PERIODS[key]
+                f['lineage']={'operation':f['formula'],'operands':inputs,'expected_periods':list(dict.fromkeys(expected)),'missing_periods':pack['missing_months'],'engine_hash':engine_hash}
+    return {**source,'preparation':{'engine_hash':engine_hash,'engine_source':engine_source+'\n'+metric_source,'metric_version':DEFINITION['version']},'sha256':hashlib.sha256(json.dumps(rows,sort_keys=True).encode()).hexdigest(), 'periods':periods,'comparisons':comparisons,'bridges':bridges}

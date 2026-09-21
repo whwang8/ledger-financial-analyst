@@ -2,6 +2,7 @@
 from pathlib import Path
 import json
 from .engine import compile_dataset
+from .apple import compile_apple
 ROOT=Path(__file__).resolve().parents[2]
 
 def make(identifier,name,revenue,cogs,opex,missing=None):
@@ -23,9 +24,10 @@ def main():
     ]
     for s in sources:
         p=ROOT/'data'/'synthetic'/f"{s['id']}.json";p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(s,indent=2)+'\n')
-    catalog={'version':'1.0','calculation_engine':'Python Decimal','datasets':[compile_dataset(s) for s in sources]}
+    catalog={'version':'1.0','calculation_engine':'Python Decimal','datasets':[compile_dataset(s) for s in sources]+[compile_apple()]}
     p=ROOT/'lib'/'generated'/'catalog.json';p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(catalog,separators=(',',':'))+'\n')
     overview=json.loads(json.dumps(catalog))
+    overview['datasets']=[d for d in overview['datasets'] if d['synthetic']]
     for d in overview['datasets']:
         for key in ('comparisons','bridges'):
             d[key]={k:v for k,v in d[key].items() if k=='2025-Q1→2025-Q2'}

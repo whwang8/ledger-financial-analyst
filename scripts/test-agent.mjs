@@ -23,9 +23,15 @@ execFileSync(
     'lib/preview.ts',
     'lib/catalog.ts',
     'lib/types.ts',
+    'lib/reports.ts',
+    'lib/recorder.ts',
   ],
   { stdio: 'inherit' },
 );
-execFileSync(process.execPath, ['--test', 'tests/agent.test.mjs'], {
-  stdio: 'inherit',
-});
+execFileSync(
+  process.execPath,
+  ['--test', 'tests/agent.test.mjs', 'tests/investigation.test.mjs'],
+  {
+    stdio: 'inherit',
+  },
+);

@@ -1,6 +1,6 @@
 import raw from './generated/catalog.json';
 import type { Dataset, Fact, FactSet } from './types';
-export const datasets = raw.datasets as Dataset[];
+export const datasets = raw.datasets as unknown as Dataset[];
 export const getDataset = (id: string) => {
   const d = datasets.find((x) => x.id === id);
   if (!d) throw new Error('Unknown dataset');
@@ -14,6 +14,12 @@ export const metricNames = [
   'operating_profit',
   'gross_margin',
   'operating_margin',
+  'cost_to_revenue_ratio',
+  'net_income',
+  'cash_from_operations',
+  'cash_ppe_purchases',
+  'cfo_less_ppe',
+  'cash_conversion_ratio',
 ];
 export const metricLabel = (name: string) =>
   name.replaceAll('_', ' ').replace(/^./, (x) => x.toUpperCase());

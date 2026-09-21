@@ -1,0 +1,9 @@
+{
+  "case_id": "company-05-3",
+  "question": "Investigate the largest negative account contribution to the Q1-to-Q2 profit change. Compare corresponding months across the quarters and identify the biggest contributing month.",
+  "run_id": "f8cdbbd8-9ace-4eb5-871d-80bedfd3bb0a",
+  "attempt_id": "f8cdbbd8-9ace-4eb5-871d-80bedfd3bb0a",
+  "evaluation_id": "7ad36035-8005-471e-a9a2-9d48d660ba8c",
+  "human_review": null,
+  "started_at": "2026-09-21T15:20:38.955849+00:00"
+}

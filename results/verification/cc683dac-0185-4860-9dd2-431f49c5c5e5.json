@@ -1,0 +1,11 @@
+{
+  "id": "cc683dac-0185-4860-9dd2-431f49c5c5e5",
+  "verified_at": "2026-09-21T15:19:02.681757+00:00",
+  "dataset_id": "company-06",
+  "source_hash": "24a51237001d04c27374019a00394a50eb51dfd6b9027f3f64bb578a72a6725f",
+  "engine_hash": "963f6a558a00d7109960215da1afcbf4d601db6f937307151b089d22af1e2410",
+  "stored_source_hash": "24a51237001d04c27374019a00394a50eb51dfd6b9027f3f64bb578a72a6725f",
+  "matches_stored_facts": true,
+  "different_groups": [],
+  "scope": "Recomputation consistency, not independent financial correctness."
+}

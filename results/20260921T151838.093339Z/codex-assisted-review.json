@@ -1,0 +1,70 @@
+{
+  "reviewer": "Codex-assisted review",
+  "rubric": "Task complete; correct numbers and periods; citations support entire statement; uncertainty handled.",
+  "original_attempts": 12,
+  "completed": 11,
+  "strict_passes": 9,
+  "cases": [
+    {
+      "case_id": "company-04-1",
+      "verdict": "pass",
+      "independent_human_review": false
+    },
+    {
+      "case_id": "company-04-2",
+      "verdict": "pass",
+      "independent_human_review": false
+    },
+    {
+      "case_id": "company-04-3",
+      "verdict": "pass",
+      "independent_human_review": false
+    },
+    {
+      "case_id": "company-04-4",
+      "verdict": "citation_support_failure",
+      "independent_human_review": false
+    },
+    {
+      "case_id": "company-05-1",
+      "verdict": "pass",
+      "independent_human_review": false
+    },
+    {
+      "case_id": "company-05-2",
+      "verdict": "pass",
+      "independent_human_review": false
+    },
+    {
+      "case_id": "company-05-3",
+      "verdict": "pass",
+      "independent_human_review": false
+    },
+    {
+      "case_id": "company-05-4",
+      "verdict": "citation_support_failure",
+      "independent_human_review": false
+    },
+    {
+      "case_id": "company-06-1",
+      "verdict": "pass",
+      "independent_human_review": false
+    },
+    {
+      "case_id": "company-06-2",
+      "verdict": "pass",
+      "independent_human_review": false
+    },
+    {
+      "case_id": "company-06-3",
+      "verdict": "pass",
+      "independent_human_review": false
+    },
+    {
+      "case_id": "company-06-4",
+      "verdict": "execution_failure",
+      "independent_human_review": false
+    }
+  ],
+  "explanation": "See docs/investigation-v2-validation.md. Review does not replace or count as human review."
+}
