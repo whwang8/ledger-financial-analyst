@@ -1,0 +1,416 @@
+{
+  "case_id": "company-04-4",
+  "question": "Was the revenue increase from Q1 to Q2 caused by acquiring more customers?",
+  "human_review": null,
+  "run": {
+    "id": "2eb7960f-8ff1-49a5-bb80-5fc5c3b6070c",
+    "dataset_id": "company-04",
+    "dataset_hash": "56eb057187774fa57bb8ef401690f289e99c4022a8a9ce2ea5e6f32935085cec",
+    "question": "Was the revenue increase from Q1 to Q2 caused by acquiring more customers?",
+    "analysis": {
+      "decision": "limited",
+      "summary": "Revenue increased from Q1 to Q2, but the available financial aggregates cannot establish that customer acquisition caused the increase.",
+      "findings": [
+        {
+          "text": "Using the complete-quarter comparison, Q2 revenue was $120,000 higher than Q1, a 36.36% increase.",
+          "evidence_ids": [
+            "company-04:2025-Q1\u21922025-Q2:revenue:change",
+            "company-04:2025-Q1\u21922025-Q2:revenue:percent_change"
+          ]
+        },
+        {
+          "text": "The accounting bridge attributes $120,000 of profit contribution to the revenue change; this is an accounting decomposition, not evidence that the increase came from acquiring more customers.",
+          "evidence_ids": [
+            "company-04:2025-Q1\u21922025-Q2:revenue:profit_contribution"
+          ]
+        }
+      ],
+      "limitations": [
+        "The dataset contains financial aggregates only; it has no customer counts, new-customer records, retention, pricing, volume, or product-mix data. Therefore customer acquisition is neither confirmed nor ruled out as a cause.",
+        "Determining this would require, at minimum, Q1 and Q2 new-customer counts and revenue split between new and existing customers; ideally also average revenue per customer and churn/expansion data."
+      ],
+      "suggested_questions": [
+        "Can you provide Q1 and Q2 customer counts, new customers, churn, and revenue from new versus existing customers?"
+      ]
+    },
+    "trace": [
+      {
+        "step": 1,
+        "tool": "inspect_dataset",
+        "arguments": {},
+        "result": {
+          "dataset_id": "company-04",
+          "name": "Juniper Systems",
+          "currency": "USD",
+          "data_hash": "56eb057187774fa57bb8ef401690f289e99c4022a8a9ce2ea5e6f32935085cec",
+          "periods": [
+            {
+              "id": "2025-01",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-02",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-03",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-04",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-05",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-06",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-Q1",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-Q2",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-H1",
+              "complete": true,
+              "missing_months": []
+            }
+          ],
+          "metrics": [
+            "revenue",
+            "cogs",
+            "operating_expenses",
+            "gross_profit",
+            "operating_profit",
+            "gross_margin",
+            "operating_margin"
+          ],
+          "conventions": [
+            "Costs are positive expense amounts.",
+            "Margins use aggregate profits divided by aggregate revenue.",
+            "Missing periods and nonpositive ratio denominators return null.",
+            "Percentage changes require a positive baseline.",
+            "Only financial aggregates are available. No customer, supplier, price, volume or staffing evidence exists."
+          ]
+        },
+        "elapsed_ms": 0
+      },
+      {
+        "step": 2,
+        "tool": "compare_periods",
+        "arguments": {
+          "from_period": "2025-Q1",
+          "to_period": "2025-Q2",
+          "metrics": [
+            "revenue"
+          ]
+        },
+        "result": {
+          "complete": true,
+          "missing_months": [],
+          "facts": [
+            {
+              "id": "company-04:2025-Q1\u21922025-Q2:revenue:change",
+              "dataset_id": "company-04",
+              "period": "2025-Q1\u21922025-Q2",
+              "metric": "revenue",
+              "value": 120000,
+              "unit": "USD",
+              "formula": "revenue(2025-Q2) - revenue(2025-Q1)",
+              "source_row_ids": [
+                "company-04-2025-01",
+                "company-04-2025-02",
+                "company-04-2025-03",
+                "company-04-2025-04",
+                "company-04-2025-05",
+                "company-04-2025-06"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-Q1\u21922025-Q2:revenue:percent_change",
+              "dataset_id": "company-04",
+              "period": "2025-Q1\u21922025-Q2",
+              "metric": "revenue",
+              "value": 36.363636,
+              "unit": "percent",
+              "formula": "(revenue(2025-Q2) - revenue(2025-Q1)) / revenue(2025-Q1) * 100",
+              "source_row_ids": [
+                "company-04-2025-01",
+                "company-04-2025-02",
+                "company-04-2025-03",
+                "company-04-2025-04",
+                "company-04-2025-05",
+                "company-04-2025-06"
+              ],
+              "reason": null
+            }
+          ]
+        },
+        "elapsed_ms": 0
+      },
+      {
+        "step": 3,
+        "tool": "explain_profit_change",
+        "arguments": {
+          "from_period": "2025-Q1",
+          "to_period": "2025-Q2"
+        },
+        "result": {
+          "complete": true,
+          "missing_months": [],
+          "facts": [
+            {
+              "id": "company-04:2025-Q1\u21922025-Q2:revenue:profit_contribution",
+              "dataset_id": "company-04",
+              "period": "2025-Q1\u21922025-Q2",
+              "metric": "revenue",
+              "value": 120000,
+              "unit": "USD",
+              "formula": "1 * (revenue(2025-Q2) - revenue(2025-Q1))",
+              "source_row_ids": [
+                "company-04-2025-01",
+                "company-04-2025-02",
+                "company-04-2025-03",
+                "company-04-2025-04",
+                "company-04-2025-05",
+                "company-04-2025-06"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-Q1\u21922025-Q2:cogs:profit_contribution",
+              "dataset_id": "company-04",
+              "period": "2025-Q1\u21922025-Q2",
+              "metric": "cogs",
+              "value": -72000,
+              "unit": "USD",
+              "formula": "-1 * (cogs(2025-Q2) - cogs(2025-Q1))",
+              "source_row_ids": [
+                "company-04-2025-01",
+                "company-04-2025-02",
+                "company-04-2025-03",
+                "company-04-2025-04",
+                "company-04-2025-05",
+                "company-04-2025-06"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-Q1\u21922025-Q2:operating_expenses:profit_contribution",
+              "dataset_id": "company-04",
+              "period": "2025-Q1\u21922025-Q2",
+              "metric": "operating_expenses",
+              "value": 0,
+              "unit": "USD",
+              "formula": "-1 * (operating_expenses(2025-Q2) - operating_expenses(2025-Q1))",
+              "source_row_ids": [
+                "company-04-2025-01",
+                "company-04-2025-02",
+                "company-04-2025-03",
+                "company-04-2025-04",
+                "company-04-2025-05",
+                "company-04-2025-06"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-Q1\u21922025-Q2:operating_profit:profit_change",
+              "dataset_id": "company-04",
+              "period": "2025-Q1\u21922025-Q2",
+              "metric": "operating_profit",
+              "value": 48000,
+              "unit": "USD",
+              "formula": "change(revenue) - change(cogs) - change(operating_expenses)",
+              "source_row_ids": [
+                "company-04-2025-01",
+                "company-04-2025-02",
+                "company-04-2025-03",
+                "company-04-2025-04",
+                "company-04-2025-05",
+                "company-04-2025-06"
+              ],
+              "reason": null
+            }
+          ]
+        },
+        "elapsed_ms": 0
+      },
+      {
+        "step": 4,
+        "tool": "submit_analysis",
+        "arguments": {
+          "decision": "limited",
+          "summary": "Revenue increased from Q1 to Q2, but the available financial aggregates cannot establish that customer acquisition caused the increase.",
+          "findings": [
+            {
+              "text": "Using the complete-quarter comparison, Q2 revenue was $120,000 higher than Q1, a 36.36% increase.",
+              "evidence_ids": [
+                "company-04:2025-Q1\u21922025-Q2:revenue:change",
+                "company-04:2025-Q1\u21922025-Q2:revenue:percent_change"
+              ]
+            },
+            {
+              "text": "The accounting bridge attributes $120,000 of profit contribution to the revenue change; this is an accounting decomposition, not evidence that the increase came from acquiring more customers.",
+              "evidence_ids": [
+                "company-04:2025-Q1\u21922025-Q2:revenue:profit_contribution"
+              ]
+            }
+          ],
+          "limitations": [
+            "The dataset contains financial aggregates only; it has no customer counts, new-customer records, retention, pricing, volume, or product-mix data. Therefore customer acquisition is neither confirmed nor ruled out as a cause.",
+            "Determining this would require, at minimum, Q1 and Q2 new-customer counts and revenue split between new and existing customers; ideally also average revenue per customer and churn/expansion data."
+          ],
+          "suggested_questions": [
+            "Can you provide Q1 and Q2 customer counts, new customers, churn, and revenue from new versus existing customers?"
+          ]
+        },
+        "result": {
+          "accepted": true
+        },
+        "elapsed_ms": 0
+      }
+    ],
+    "facts": [
+      {
+        "id": "company-04:2025-Q1\u21922025-Q2:revenue:change",
+        "dataset_id": "company-04",
+        "period": "2025-Q1\u21922025-Q2",
+        "metric": "revenue",
+        "value": 120000,
+        "unit": "USD",
+        "formula": "revenue(2025-Q2) - revenue(2025-Q1)",
+        "source_row_ids": [
+          "company-04-2025-01",
+          "company-04-2025-02",
+          "company-04-2025-03",
+          "company-04-2025-04",
+          "company-04-2025-05",
+          "company-04-2025-06"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-Q1\u21922025-Q2:revenue:percent_change",
+        "dataset_id": "company-04",
+        "period": "2025-Q1\u21922025-Q2",
+        "metric": "revenue",
+        "value": 36.363636,
+        "unit": "percent",
+        "formula": "(revenue(2025-Q2) - revenue(2025-Q1)) / revenue(2025-Q1) * 100",
+        "source_row_ids": [
+          "company-04-2025-01",
+          "company-04-2025-02",
+          "company-04-2025-03",
+          "company-04-2025-04",
+          "company-04-2025-05",
+          "company-04-2025-06"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-Q1\u21922025-Q2:revenue:profit_contribution",
+        "dataset_id": "company-04",
+        "period": "2025-Q1\u21922025-Q2",
+        "metric": "revenue",
+        "value": 120000,
+        "unit": "USD",
+        "formula": "1 * (revenue(2025-Q2) - revenue(2025-Q1))",
+        "source_row_ids": [
+          "company-04-2025-01",
+          "company-04-2025-02",
+          "company-04-2025-03",
+          "company-04-2025-04",
+          "company-04-2025-05",
+          "company-04-2025-06"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-Q1\u21922025-Q2:cogs:profit_contribution",
+        "dataset_id": "company-04",
+        "period": "2025-Q1\u21922025-Q2",
+        "metric": "cogs",
+        "value": -72000,
+        "unit": "USD",
+        "formula": "-1 * (cogs(2025-Q2) - cogs(2025-Q1))",
+        "source_row_ids": [
+          "company-04-2025-01",
+          "company-04-2025-02",
+          "company-04-2025-03",
+          "company-04-2025-04",
+          "company-04-2025-05",
+          "company-04-2025-06"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-Q1\u21922025-Q2:operating_expenses:profit_contribution",
+        "dataset_id": "company-04",
+        "period": "2025-Q1\u21922025-Q2",
+        "metric": "operating_expenses",
+        "value": 0,
+        "unit": "USD",
+        "formula": "-1 * (operating_expenses(2025-Q2) - operating_expenses(2025-Q1))",
+        "source_row_ids": [
+          "company-04-2025-01",
+          "company-04-2025-02",
+          "company-04-2025-03",
+          "company-04-2025-04",
+          "company-04-2025-05",
+          "company-04-2025-06"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-Q1\u21922025-Q2:operating_profit:profit_change",
+        "dataset_id": "company-04",
+        "period": "2025-Q1\u21922025-Q2",
+        "metric": "operating_profit",
+        "value": 48000,
+        "unit": "USD",
+        "formula": "change(revenue) - change(cogs) - change(operating_expenses)",
+        "source_row_ids": [
+          "company-04-2025-01",
+          "company-04-2025-02",
+          "company-04-2025-03",
+          "company-04-2025-04",
+          "company-04-2025-05",
+          "company-04-2025-06"
+        ],
+        "reason": null
+      }
+    ],
+    "provider": "openai",
+    "model": "gpt-5.6-luna",
+    "elapsed_ms": 8113,
+    "usage": {
+      "input_tokens": 4252,
+      "output_tokens": 688
+    },
+    "mode": "live",
+    "created_at": "2026-09-21T00:04:07.377Z",
+    "validation": {
+      "references_valid": true,
+      "semantic_review": "not_reviewed"
+    }
+  },
+  "execution": "success",
+  "evidence_checks": [],
+  "evidence_coverage": null,
+  "elapsed_seconds": 8.12
+}

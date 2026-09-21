@@ -1,0 +1,9 @@
+{
+  "case_id": "company-06-1",
+  "question": "For Q2 2025, report revenue, COGS, operating expenses, operating profit, and gross margin.",
+  "human_review": null,
+  "execution": "error",
+  "error": "Remote end closed connection without response",
+  "evidence_coverage": false,
+  "elapsed_seconds": 3.22
+}

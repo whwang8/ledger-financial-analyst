@@ -1,0 +1,50 @@
+{
+  "id": "company-04",
+  "name": "Juniper Systems",
+  "currency": "USD",
+  "synthetic": true,
+  "rows": [
+    {
+      "row_id": "company-04-2025-01",
+      "month": "2025-01",
+      "revenue": 100000,
+      "cogs": 60000,
+      "operating_expenses": 20000
+    },
+    {
+      "row_id": "company-04-2025-02",
+      "month": "2025-02",
+      "revenue": 110000,
+      "cogs": 66000,
+      "operating_expenses": 20000
+    },
+    {
+      "row_id": "company-04-2025-03",
+      "month": "2025-03",
+      "revenue": 120000,
+      "cogs": 72000,
+      "operating_expenses": 20000
+    },
+    {
+      "row_id": "company-04-2025-04",
+      "month": "2025-04",
+      "revenue": 140000,
+      "cogs": 84000,
+      "operating_expenses": 20000
+    },
+    {
+      "row_id": "company-04-2025-05",
+      "month": "2025-05",
+      "revenue": 150000,
+      "cogs": 90000,
+      "operating_expenses": 20000
+    },
+    {
+      "row_id": "company-04-2025-06",
+      "month": "2025-06",
+      "revenue": 160000,
+      "cogs": 96000,
+      "operating_expenses": 20000
+    }
+  ]
+}

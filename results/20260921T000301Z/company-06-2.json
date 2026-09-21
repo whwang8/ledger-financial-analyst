@@ -1,0 +1,450 @@
+{
+  "case_id": "company-06-2",
+  "question": "How much did operating profit change from Q1 to Q2 2025? Reconcile the change across revenue, COGS, and operating expenses.",
+  "human_review": null,
+  "run": {
+    "id": "6c77b1c1-42b6-4d75-97b3-e8a451bf8b59",
+    "dataset_id": "company-06",
+    "dataset_hash": "24a51237001d04c27374019a00394a50eb51dfd6b9027f3f64bb578a72a6725f",
+    "question": "How much did operating profit change from Q1 to Q2 2025? Reconcile the change across revenue, COGS, and operating expenses.",
+    "analysis": {
+      "decision": "limited",
+      "summary": "A complete Q1-to-Q2 2025 operating-profit change cannot be determined because May 2025 is missing from Q2.",
+      "findings": [
+        {
+          "text": "Q1 2025 operating profit was $72,000, based on $330,000 of revenue less $198,000 of COGS and $60,000 of operating expenses.",
+          "evidence_ids": [
+            "company-06:2025-Q1:operating_profit",
+            "company-06:2025-Q1:revenue",
+            "company-06:2025-Q1:cogs",
+            "company-06:2025-Q1:operating_expenses"
+          ]
+        },
+        {
+          "text": "Q2 2025 operating profit and its revenue, COGS, and operating-expense totals are unavailable because May 2025 is missing; therefore the Q1-to-Q2 change and its reconciliation cannot be stated reliably.",
+          "evidence_ids": [
+            "company-06:2025-Q2:operating_profit",
+            "company-06:2025-Q2:revenue",
+            "company-06:2025-Q2:cogs",
+            "company-06:2025-Q2:operating_expenses"
+          ]
+        }
+      ],
+      "limitations": [
+        "Q2 is incomplete: May 2025 is missing. Missing data is treated as unknown, not zero, so a full-quarter Q2 comparison is unavailable.",
+        "The available aggregates cannot identify business causes beyond the accounting bridge."
+      ],
+      "suggested_questions": [
+        "Can you provide the missing May 2025 revenue, COGS, and operating-expense data so the full Q1-to-Q2 reconciliation can be calculated?"
+      ]
+    },
+    "trace": [
+      {
+        "step": 1,
+        "tool": "inspect_dataset",
+        "arguments": {},
+        "result": {
+          "dataset_id": "company-06",
+          "name": "Harbor Industries",
+          "currency": "USD",
+          "data_hash": "24a51237001d04c27374019a00394a50eb51dfd6b9027f3f64bb578a72a6725f",
+          "periods": [
+            {
+              "id": "2025-01",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-02",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-03",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-04",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-05",
+              "complete": false,
+              "missing_months": [
+                "2025-05"
+              ]
+            },
+            {
+              "id": "2025-06",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-Q1",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-Q2",
+              "complete": false,
+              "missing_months": [
+                "2025-05"
+              ]
+            },
+            {
+              "id": "2025-H1",
+              "complete": false,
+              "missing_months": [
+                "2025-05"
+              ]
+            }
+          ],
+          "metrics": [
+            "revenue",
+            "cogs",
+            "operating_expenses",
+            "gross_profit",
+            "operating_profit",
+            "gross_margin",
+            "operating_margin"
+          ],
+          "conventions": [
+            "Costs are positive expense amounts.",
+            "Margins use aggregate profits divided by aggregate revenue.",
+            "Missing periods and nonpositive ratio denominators return null.",
+            "Percentage changes require a positive baseline.",
+            "Only financial aggregates are available. No customer, supplier, price, volume or staffing evidence exists."
+          ]
+        },
+        "elapsed_ms": 0
+      },
+      {
+        "step": 2,
+        "tool": "calculate_metrics",
+        "arguments": {
+          "periods": [
+            "2025-Q1",
+            "2025-Q2"
+          ],
+          "metrics": [
+            "revenue",
+            "cogs",
+            "operating_expenses",
+            "operating_profit"
+          ]
+        },
+        "result": {
+          "facts": [
+            {
+              "id": "company-06:2025-Q1:revenue",
+              "dataset_id": "company-06",
+              "period": "2025-Q1",
+              "metric": "revenue",
+              "value": 330000,
+              "unit": "USD",
+              "formula": "sum(revenue)",
+              "source_row_ids": [
+                "company-06-2025-01",
+                "company-06-2025-02",
+                "company-06-2025-03"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-06:2025-Q1:cogs",
+              "dataset_id": "company-06",
+              "period": "2025-Q1",
+              "metric": "cogs",
+              "value": 198000,
+              "unit": "USD",
+              "formula": "sum(cogs)",
+              "source_row_ids": [
+                "company-06-2025-01",
+                "company-06-2025-02",
+                "company-06-2025-03"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-06:2025-Q1:operating_expenses",
+              "dataset_id": "company-06",
+              "period": "2025-Q1",
+              "metric": "operating_expenses",
+              "value": 60000,
+              "unit": "USD",
+              "formula": "sum(operating_expenses)",
+              "source_row_ids": [
+                "company-06-2025-01",
+                "company-06-2025-02",
+                "company-06-2025-03"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-06:2025-Q1:operating_profit",
+              "dataset_id": "company-06",
+              "period": "2025-Q1",
+              "metric": "operating_profit",
+              "value": 72000,
+              "unit": "USD",
+              "formula": "sum(revenue) - sum(cogs) - sum(operating_expenses)",
+              "source_row_ids": [
+                "company-06-2025-01",
+                "company-06-2025-02",
+                "company-06-2025-03"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-06:2025-Q2:revenue",
+              "dataset_id": "company-06",
+              "period": "2025-Q2",
+              "metric": "revenue",
+              "value": null,
+              "unit": "USD",
+              "formula": "sum(revenue)",
+              "source_row_ids": [
+                "company-06-2025-04",
+                "company-06-2025-06"
+              ],
+              "reason": "Missing months: 2025-05"
+            },
+            {
+              "id": "company-06:2025-Q2:cogs",
+              "dataset_id": "company-06",
+              "period": "2025-Q2",
+              "metric": "cogs",
+              "value": null,
+              "unit": "USD",
+              "formula": "sum(cogs)",
+              "source_row_ids": [
+                "company-06-2025-04",
+                "company-06-2025-06"
+              ],
+              "reason": "Missing months: 2025-05"
+            },
+            {
+              "id": "company-06:2025-Q2:operating_expenses",
+              "dataset_id": "company-06",
+              "period": "2025-Q2",
+              "metric": "operating_expenses",
+              "value": null,
+              "unit": "USD",
+              "formula": "sum(operating_expenses)",
+              "source_row_ids": [
+                "company-06-2025-04",
+                "company-06-2025-06"
+              ],
+              "reason": "Missing months: 2025-05"
+            },
+            {
+              "id": "company-06:2025-Q2:operating_profit",
+              "dataset_id": "company-06",
+              "period": "2025-Q2",
+              "metric": "operating_profit",
+              "value": null,
+              "unit": "USD",
+              "formula": "sum(revenue) - sum(cogs) - sum(operating_expenses)",
+              "source_row_ids": [
+                "company-06-2025-04",
+                "company-06-2025-06"
+              ],
+              "reason": "Missing months: 2025-05"
+            }
+          ],
+          "coverage": [
+            {
+              "period": "2025-Q1",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "period": "2025-Q2",
+              "complete": false,
+              "missing_months": [
+                "2025-05"
+              ]
+            }
+          ]
+        },
+        "elapsed_ms": 1
+      },
+      {
+        "step": 3,
+        "tool": "submit_analysis",
+        "arguments": {
+          "decision": "limited",
+          "summary": "A complete Q1-to-Q2 2025 operating-profit change cannot be determined because May 2025 is missing from Q2.",
+          "findings": [
+            {
+              "text": "Q1 2025 operating profit was $72,000, based on $330,000 of revenue less $198,000 of COGS and $60,000 of operating expenses.",
+              "evidence_ids": [
+                "company-06:2025-Q1:operating_profit",
+                "company-06:2025-Q1:revenue",
+                "company-06:2025-Q1:cogs",
+                "company-06:2025-Q1:operating_expenses"
+              ]
+            },
+            {
+              "text": "Q2 2025 operating profit and its revenue, COGS, and operating-expense totals are unavailable because May 2025 is missing; therefore the Q1-to-Q2 change and its reconciliation cannot be stated reliably.",
+              "evidence_ids": [
+                "company-06:2025-Q2:operating_profit",
+                "company-06:2025-Q2:revenue",
+                "company-06:2025-Q2:cogs",
+                "company-06:2025-Q2:operating_expenses"
+              ]
+            }
+          ],
+          "limitations": [
+            "Q2 is incomplete: May 2025 is missing. Missing data is treated as unknown, not zero, so a full-quarter Q2 comparison is unavailable.",
+            "The available aggregates cannot identify business causes beyond the accounting bridge."
+          ],
+          "suggested_questions": [
+            "Can you provide the missing May 2025 revenue, COGS, and operating-expense data so the full Q1-to-Q2 reconciliation can be calculated?"
+          ]
+        },
+        "result": {
+          "accepted": true
+        },
+        "elapsed_ms": 0
+      }
+    ],
+    "facts": [
+      {
+        "id": "company-06:2025-Q1:revenue",
+        "dataset_id": "company-06",
+        "period": "2025-Q1",
+        "metric": "revenue",
+        "value": 330000,
+        "unit": "USD",
+        "formula": "sum(revenue)",
+        "source_row_ids": [
+          "company-06-2025-01",
+          "company-06-2025-02",
+          "company-06-2025-03"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-06:2025-Q1:cogs",
+        "dataset_id": "company-06",
+        "period": "2025-Q1",
+        "metric": "cogs",
+        "value": 198000,
+        "unit": "USD",
+        "formula": "sum(cogs)",
+        "source_row_ids": [
+          "company-06-2025-01",
+          "company-06-2025-02",
+          "company-06-2025-03"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-06:2025-Q1:operating_expenses",
+        "dataset_id": "company-06",
+        "period": "2025-Q1",
+        "metric": "operating_expenses",
+        "value": 60000,
+        "unit": "USD",
+        "formula": "sum(operating_expenses)",
+        "source_row_ids": [
+          "company-06-2025-01",
+          "company-06-2025-02",
+          "company-06-2025-03"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-06:2025-Q1:operating_profit",
+        "dataset_id": "company-06",
+        "period": "2025-Q1",
+        "metric": "operating_profit",
+        "value": 72000,
+        "unit": "USD",
+        "formula": "sum(revenue) - sum(cogs) - sum(operating_expenses)",
+        "source_row_ids": [
+          "company-06-2025-01",
+          "company-06-2025-02",
+          "company-06-2025-03"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-06:2025-Q2:revenue",
+        "dataset_id": "company-06",
+        "period": "2025-Q2",
+        "metric": "revenue",
+        "value": null,
+        "unit": "USD",
+        "formula": "sum(revenue)",
+        "source_row_ids": [
+          "company-06-2025-04",
+          "company-06-2025-06"
+        ],
+        "reason": "Missing months: 2025-05"
+      },
+      {
+        "id": "company-06:2025-Q2:cogs",
+        "dataset_id": "company-06",
+        "period": "2025-Q2",
+        "metric": "cogs",
+        "value": null,
+        "unit": "USD",
+        "formula": "sum(cogs)",
+        "source_row_ids": [
+          "company-06-2025-04",
+          "company-06-2025-06"
+        ],
+        "reason": "Missing months: 2025-05"
+      },
+      {
+        "id": "company-06:2025-Q2:operating_expenses",
+        "dataset_id": "company-06",
+        "period": "2025-Q2",
+        "metric": "operating_expenses",
+        "value": null,
+        "unit": "USD",
+        "formula": "sum(operating_expenses)",
+        "source_row_ids": [
+          "company-06-2025-04",
+          "company-06-2025-06"
+        ],
+        "reason": "Missing months: 2025-05"
+      },
+      {
+        "id": "company-06:2025-Q2:operating_profit",
+        "dataset_id": "company-06",
+        "period": "2025-Q2",
+        "metric": "operating_profit",
+        "value": null,
+        "unit": "USD",
+        "formula": "sum(revenue) - sum(cogs) - sum(operating_expenses)",
+        "source_row_ids": [
+          "company-06-2025-04",
+          "company-06-2025-06"
+        ],
+        "reason": "Missing months: 2025-05"
+      }
+    ],
+    "provider": "openai",
+    "model": "gpt-5.6-luna",
+    "elapsed_ms": 7048,
+    "usage": {
+      "input_tokens": 4103,
+      "output_tokens": 525
+    },
+    "mode": "live",
+    "created_at": "2026-09-21T00:05:54.495Z",
+    "validation": {
+      "references_valid": true,
+      "semantic_review": "not_reviewed"
+    }
+  },
+  "execution": "success",
+  "evidence_checks": [],
+  "evidence_coverage": null,
+  "elapsed_seconds": 8.81
+}

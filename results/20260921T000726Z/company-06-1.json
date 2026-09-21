@@ -1,0 +1,362 @@
+{
+  "case_id": "company-06-1",
+  "question": "For Q2 2025, report revenue, COGS, operating expenses, operating profit, and gross margin.",
+  "human_review": null,
+  "run": {
+    "id": "256235ea-6039-4407-9646-96eac79a1e2c",
+    "dataset_id": "company-06",
+    "dataset_hash": "24a51237001d04c27374019a00394a50eb51dfd6b9027f3f64bb578a72a6725f",
+    "question": "For Q2 2025, report revenue, COGS, operating expenses, operating profit, and gross margin.",
+    "analysis": {
+      "decision": "limited",
+      "summary": "Q2 2025 cannot be reported as a complete quarter because May 2025 is missing; the requested quarter-level values are unavailable.",
+      "findings": [
+        {
+          "text": "Revenue for Q2 2025 is unavailable because May 2025 is missing.",
+          "evidence_ids": [
+            "company-06:2025-Q2:revenue"
+          ]
+        },
+        {
+          "text": "COGS, operating expenses, and operating profit for Q2 2025 are unavailable because May 2025 is missing.",
+          "evidence_ids": [
+            "company-06:2025-Q2:cogs",
+            "company-06:2025-Q2:operating_expenses",
+            "company-06:2025-Q2:operating_profit"
+          ]
+        },
+        {
+          "text": "Gross margin for Q2 2025 is unavailable because May 2025 is missing.",
+          "evidence_ids": [
+            "company-06:2025-Q2:gross_margin"
+          ]
+        }
+      ],
+      "limitations": [
+        "The dataset covers January\u2013June 2025, but May 2025 is missing; incomplete-quarter metrics are not calculated.",
+        "No complete Q2 totals or margin can be inferred from April and June alone."
+      ],
+      "suggested_questions": [
+        "Would you like the available April and June 2025 monthly figures instead?"
+      ]
+    },
+    "trace": [
+      {
+        "step": 1,
+        "tool": "inspect_dataset",
+        "arguments": {},
+        "result": {
+          "dataset_id": "company-06",
+          "name": "Harbor Industries",
+          "currency": "USD",
+          "data_hash": "24a51237001d04c27374019a00394a50eb51dfd6b9027f3f64bb578a72a6725f",
+          "periods": [
+            {
+              "id": "2025-01",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-02",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-03",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-04",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-05",
+              "complete": false,
+              "missing_months": [
+                "2025-05"
+              ]
+            },
+            {
+              "id": "2025-06",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-Q1",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-Q2",
+              "complete": false,
+              "missing_months": [
+                "2025-05"
+              ]
+            },
+            {
+              "id": "2025-H1",
+              "complete": false,
+              "missing_months": [
+                "2025-05"
+              ]
+            }
+          ],
+          "metrics": [
+            "revenue",
+            "cogs",
+            "operating_expenses",
+            "gross_profit",
+            "operating_profit",
+            "gross_margin",
+            "operating_margin"
+          ],
+          "conventions": [
+            "Costs are positive expense amounts.",
+            "Margins use aggregate profits divided by aggregate revenue.",
+            "Missing periods and nonpositive ratio denominators return null.",
+            "Percentage changes require a positive baseline.",
+            "Only financial aggregates are available. No customer, supplier, price, volume or staffing evidence exists."
+          ]
+        },
+        "elapsed_ms": 0
+      },
+      {
+        "step": 2,
+        "tool": "calculate_metrics",
+        "arguments": {
+          "periods": [
+            "2025-Q2"
+          ],
+          "metrics": [
+            "revenue",
+            "cogs",
+            "operating_expenses",
+            "operating_profit",
+            "gross_margin"
+          ]
+        },
+        "result": {
+          "facts": [
+            {
+              "id": "company-06:2025-Q2:revenue",
+              "dataset_id": "company-06",
+              "period": "2025-Q2",
+              "metric": "revenue",
+              "value": null,
+              "unit": "USD",
+              "formula": "sum(revenue)",
+              "source_row_ids": [
+                "company-06-2025-04",
+                "company-06-2025-06"
+              ],
+              "reason": "Missing months: 2025-05"
+            },
+            {
+              "id": "company-06:2025-Q2:cogs",
+              "dataset_id": "company-06",
+              "period": "2025-Q2",
+              "metric": "cogs",
+              "value": null,
+              "unit": "USD",
+              "formula": "sum(cogs)",
+              "source_row_ids": [
+                "company-06-2025-04",
+                "company-06-2025-06"
+              ],
+              "reason": "Missing months: 2025-05"
+            },
+            {
+              "id": "company-06:2025-Q2:operating_expenses",
+              "dataset_id": "company-06",
+              "period": "2025-Q2",
+              "metric": "operating_expenses",
+              "value": null,
+              "unit": "USD",
+              "formula": "sum(operating_expenses)",
+              "source_row_ids": [
+                "company-06-2025-04",
+                "company-06-2025-06"
+              ],
+              "reason": "Missing months: 2025-05"
+            },
+            {
+              "id": "company-06:2025-Q2:operating_profit",
+              "dataset_id": "company-06",
+              "period": "2025-Q2",
+              "metric": "operating_profit",
+              "value": null,
+              "unit": "USD",
+              "formula": "sum(revenue) - sum(cogs) - sum(operating_expenses)",
+              "source_row_ids": [
+                "company-06-2025-04",
+                "company-06-2025-06"
+              ],
+              "reason": "Missing months: 2025-05"
+            },
+            {
+              "id": "company-06:2025-Q2:gross_margin",
+              "dataset_id": "company-06",
+              "period": "2025-Q2",
+              "metric": "gross_margin",
+              "value": null,
+              "unit": "percent",
+              "formula": "(sum(revenue) - sum(cogs)) / sum(revenue) * 100",
+              "source_row_ids": [
+                "company-06-2025-04",
+                "company-06-2025-06"
+              ],
+              "reason": "Missing months: 2025-05"
+            }
+          ],
+          "coverage": [
+            {
+              "period": "2025-Q2",
+              "complete": false,
+              "missing_months": [
+                "2025-05"
+              ]
+            }
+          ]
+        },
+        "elapsed_ms": 0
+      },
+      {
+        "step": 3,
+        "tool": "submit_analysis",
+        "arguments": {
+          "decision": "limited",
+          "summary": "Q2 2025 cannot be reported as a complete quarter because May 2025 is missing; the requested quarter-level values are unavailable.",
+          "findings": [
+            {
+              "text": "Revenue for Q2 2025 is unavailable because May 2025 is missing.",
+              "evidence_ids": [
+                "company-06:2025-Q2:revenue"
+              ]
+            },
+            {
+              "text": "COGS, operating expenses, and operating profit for Q2 2025 are unavailable because May 2025 is missing.",
+              "evidence_ids": [
+                "company-06:2025-Q2:cogs",
+                "company-06:2025-Q2:operating_expenses",
+                "company-06:2025-Q2:operating_profit"
+              ]
+            },
+            {
+              "text": "Gross margin for Q2 2025 is unavailable because May 2025 is missing.",
+              "evidence_ids": [
+                "company-06:2025-Q2:gross_margin"
+              ]
+            }
+          ],
+          "limitations": [
+            "The dataset covers January\u2013June 2025, but May 2025 is missing; incomplete-quarter metrics are not calculated.",
+            "No complete Q2 totals or margin can be inferred from April and June alone."
+          ],
+          "suggested_questions": [
+            "Would you like the available April and June 2025 monthly figures instead?"
+          ]
+        },
+        "result": {
+          "accepted": true
+        },
+        "elapsed_ms": 0
+      }
+    ],
+    "facts": [
+      {
+        "id": "company-06:2025-Q2:revenue",
+        "dataset_id": "company-06",
+        "period": "2025-Q2",
+        "metric": "revenue",
+        "value": null,
+        "unit": "USD",
+        "formula": "sum(revenue)",
+        "source_row_ids": [
+          "company-06-2025-04",
+          "company-06-2025-06"
+        ],
+        "reason": "Missing months: 2025-05"
+      },
+      {
+        "id": "company-06:2025-Q2:cogs",
+        "dataset_id": "company-06",
+        "period": "2025-Q2",
+        "metric": "cogs",
+        "value": null,
+        "unit": "USD",
+        "formula": "sum(cogs)",
+        "source_row_ids": [
+          "company-06-2025-04",
+          "company-06-2025-06"
+        ],
+        "reason": "Missing months: 2025-05"
+      },
+      {
+        "id": "company-06:2025-Q2:operating_expenses",
+        "dataset_id": "company-06",
+        "period": "2025-Q2",
+        "metric": "operating_expenses",
+        "value": null,
+        "unit": "USD",
+        "formula": "sum(operating_expenses)",
+        "source_row_ids": [
+          "company-06-2025-04",
+          "company-06-2025-06"
+        ],
+        "reason": "Missing months: 2025-05"
+      },
+      {
+        "id": "company-06:2025-Q2:operating_profit",
+        "dataset_id": "company-06",
+        "period": "2025-Q2",
+        "metric": "operating_profit",
+        "value": null,
+        "unit": "USD",
+        "formula": "sum(revenue) - sum(cogs) - sum(operating_expenses)",
+        "source_row_ids": [
+          "company-06-2025-04",
+          "company-06-2025-06"
+        ],
+        "reason": "Missing months: 2025-05"
+      },
+      {
+        "id": "company-06:2025-Q2:gross_margin",
+        "dataset_id": "company-06",
+        "period": "2025-Q2",
+        "metric": "gross_margin",
+        "value": null,
+        "unit": "percent",
+        "formula": "(sum(revenue) - sum(cogs)) / sum(revenue) * 100",
+        "source_row_ids": [
+          "company-06-2025-04",
+          "company-06-2025-06"
+        ],
+        "reason": "Missing months: 2025-05"
+      }
+    ],
+    "provider": "openai",
+    "model": "gpt-5.6-luna",
+    "elapsed_ms": 5060,
+    "usage": {
+      "input_tokens": 3782,
+      "output_tokens": 401
+    },
+    "mode": "live",
+    "created_at": "2026-09-21T00:07:47.547Z",
+    "validation": {
+      "references_valid": true,
+      "semantic_review": "not_reviewed"
+    }
+  },
+  "execution": "success",
+  "evidence_checks": [
+    {
+      "id": "company-06:2025-Q2:operating_profit",
+      "match": true
+    }
+  ],
+  "evidence_coverage": true,
+  "elapsed_seconds": 5.08
+}

@@ -1,0 +1,261 @@
+{
+  "case_id": "company-06-4",
+  "question": "Since reported Q2 profit is $80,000 versus Q1\u2019s $72,000, can I say profit improved by 11.11%?",
+  "human_review": null,
+  "run": {
+    "id": "c95075ba-6ea2-4393-a776-137c1d060a4b",
+    "dataset_id": "company-06",
+    "dataset_hash": "24a51237001d04c27374019a00394a50eb51dfd6b9027f3f64bb578a72a6725f",
+    "question": "Since reported Q2 profit is $80,000 versus Q1\u2019s $72,000, can I say profit improved by 11.11%?",
+    "analysis": {
+      "decision": "limited",
+      "summary": "Conditionally yes as arithmetic on the two reported figures, but not as a verified Q2-versus-Q1 conclusion from this dataset because Q2 is incomplete and its operating-profit comparison is unavailable.",
+      "findings": [
+        {
+          "text": "If $80,000 and $72,000 are accurate, comparable profit figures, the stated 11.11% improvement is the conventional percentage-change wording; however, \u201cprofit\u201d should be defined (for example, operating profit).",
+          "evidence_ids": [
+            "company-06:2025-Q1\u21922025-Q2:operating_profit:percent_change"
+          ]
+        },
+        {
+          "text": "The dataset cannot verify that Q2 profit was $80,000 versus Q1\u2019s $72,000: the Q1-to-Q2 operating-profit change and percentage change are unavailable because Q2 is missing May 2025.",
+          "evidence_ids": [
+            "company-06:2025-Q1\u21922025-Q2:operating_profit:change",
+            "company-06:2025-Q1\u21922025-Q2:operating_profit:percent_change"
+          ]
+        }
+      ],
+      "limitations": [
+        "Q2 2025 is incomplete, so full-quarter Q2 metrics and the Q2-versus-Q1 operating-profit percentage change cannot be established from the available data.",
+        "The available data contains financial aggregates only and does not establish what caused any profit movement."
+      ],
+      "suggested_questions": [
+        "Are the $80,000 and $72,000 figures operating profit, and are they based on comparable full-quarter periods?"
+      ]
+    },
+    "trace": [
+      {
+        "step": 1,
+        "tool": "inspect_dataset",
+        "arguments": {},
+        "result": {
+          "dataset_id": "company-06",
+          "name": "Harbor Industries",
+          "currency": "USD",
+          "data_hash": "24a51237001d04c27374019a00394a50eb51dfd6b9027f3f64bb578a72a6725f",
+          "periods": [
+            {
+              "id": "2025-01",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-02",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-03",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-04",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-05",
+              "complete": false,
+              "missing_months": [
+                "2025-05"
+              ]
+            },
+            {
+              "id": "2025-06",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-Q1",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-Q2",
+              "complete": false,
+              "missing_months": [
+                "2025-05"
+              ]
+            },
+            {
+              "id": "2025-H1",
+              "complete": false,
+              "missing_months": [
+                "2025-05"
+              ]
+            }
+          ],
+          "metrics": [
+            "revenue",
+            "cogs",
+            "operating_expenses",
+            "gross_profit",
+            "operating_profit",
+            "gross_margin",
+            "operating_margin"
+          ],
+          "conventions": [
+            "Costs are positive expense amounts.",
+            "Margins use aggregate profits divided by aggregate revenue.",
+            "Missing periods and nonpositive ratio denominators return null.",
+            "Percentage changes require a positive baseline.",
+            "Only financial aggregates are available. No customer, supplier, price, volume or staffing evidence exists."
+          ]
+        },
+        "elapsed_ms": 0
+      },
+      {
+        "step": 2,
+        "tool": "compare_periods",
+        "arguments": {
+          "from_period": "2025-Q1",
+          "to_period": "2025-Q2",
+          "metrics": [
+            "operating_profit"
+          ]
+        },
+        "result": {
+          "complete": false,
+          "missing_months": [
+            "2025-05"
+          ],
+          "facts": [
+            {
+              "id": "company-06:2025-Q1\u21922025-Q2:operating_profit:change",
+              "dataset_id": "company-06",
+              "period": "2025-Q1\u21922025-Q2",
+              "metric": "operating_profit",
+              "value": null,
+              "unit": "USD",
+              "formula": "operating_profit(2025-Q2) - operating_profit(2025-Q1)",
+              "source_row_ids": [
+                "company-06-2025-01",
+                "company-06-2025-02",
+                "company-06-2025-03",
+                "company-06-2025-04",
+                "company-06-2025-06"
+              ],
+              "reason": "Incomplete or undefined comparison"
+            },
+            {
+              "id": "company-06:2025-Q1\u21922025-Q2:operating_profit:percent_change",
+              "dataset_id": "company-06",
+              "period": "2025-Q1\u21922025-Q2",
+              "metric": "operating_profit",
+              "value": null,
+              "unit": "percent",
+              "formula": "(operating_profit(2025-Q2) - operating_profit(2025-Q1)) / operating_profit(2025-Q1) * 100",
+              "source_row_ids": [
+                "company-06-2025-01",
+                "company-06-2025-02",
+                "company-06-2025-03",
+                "company-06-2025-04",
+                "company-06-2025-06"
+              ],
+              "reason": "Percentage change unavailable: incomplete period or nonpositive baseline."
+            }
+          ]
+        },
+        "elapsed_ms": 0
+      },
+      {
+        "step": 3,
+        "tool": "submit_analysis",
+        "arguments": {
+          "decision": "limited",
+          "summary": "Conditionally yes as arithmetic on the two reported figures, but not as a verified Q2-versus-Q1 conclusion from this dataset because Q2 is incomplete and its operating-profit comparison is unavailable.",
+          "findings": [
+            {
+              "text": "If $80,000 and $72,000 are accurate, comparable profit figures, the stated 11.11% improvement is the conventional percentage-change wording; however, \u201cprofit\u201d should be defined (for example, operating profit).",
+              "evidence_ids": [
+                "company-06:2025-Q1\u21922025-Q2:operating_profit:percent_change"
+              ]
+            },
+            {
+              "text": "The dataset cannot verify that Q2 profit was $80,000 versus Q1\u2019s $72,000: the Q1-to-Q2 operating-profit change and percentage change are unavailable because Q2 is missing May 2025.",
+              "evidence_ids": [
+                "company-06:2025-Q1\u21922025-Q2:operating_profit:change",
+                "company-06:2025-Q1\u21922025-Q2:operating_profit:percent_change"
+              ]
+            }
+          ],
+          "limitations": [
+            "Q2 2025 is incomplete, so full-quarter Q2 metrics and the Q2-versus-Q1 operating-profit percentage change cannot be established from the available data.",
+            "The available data contains financial aggregates only and does not establish what caused any profit movement."
+          ],
+          "suggested_questions": [
+            "Are the $80,000 and $72,000 figures operating profit, and are they based on comparable full-quarter periods?"
+          ]
+        },
+        "result": {
+          "accepted": true
+        },
+        "elapsed_ms": 0
+      }
+    ],
+    "facts": [
+      {
+        "id": "company-06:2025-Q1\u21922025-Q2:operating_profit:change",
+        "dataset_id": "company-06",
+        "period": "2025-Q1\u21922025-Q2",
+        "metric": "operating_profit",
+        "value": null,
+        "unit": "USD",
+        "formula": "operating_profit(2025-Q2) - operating_profit(2025-Q1)",
+        "source_row_ids": [
+          "company-06-2025-01",
+          "company-06-2025-02",
+          "company-06-2025-03",
+          "company-06-2025-04",
+          "company-06-2025-06"
+        ],
+        "reason": "Incomplete or undefined comparison"
+      },
+      {
+        "id": "company-06:2025-Q1\u21922025-Q2:operating_profit:percent_change",
+        "dataset_id": "company-06",
+        "period": "2025-Q1\u21922025-Q2",
+        "metric": "operating_profit",
+        "value": null,
+        "unit": "percent",
+        "formula": "(operating_profit(2025-Q2) - operating_profit(2025-Q1)) / operating_profit(2025-Q1) * 100",
+        "source_row_ids": [
+          "company-06-2025-01",
+          "company-06-2025-02",
+          "company-06-2025-03",
+          "company-06-2025-04",
+          "company-06-2025-06"
+        ],
+        "reason": "Percentage change unavailable: incomplete period or nonpositive baseline."
+      }
+    ],
+    "provider": "openai",
+    "model": "gpt-5.6-luna",
+    "elapsed_ms": 8483,
+    "usage": {
+      "input_tokens": 3714,
+      "output_tokens": 708
+    },
+    "mode": "live",
+    "created_at": "2026-09-21T00:06:41.387Z",
+    "validation": {
+      "references_valid": true,
+      "semantic_review": "not_reviewed"
+    }
+  },
+  "execution": "success",
+  "evidence_checks": [],
+  "evidence_coverage": null,
+  "elapsed_seconds": 8.49
+}

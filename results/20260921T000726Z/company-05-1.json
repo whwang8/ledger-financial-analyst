@@ -1,0 +1,360 @@
+{
+  "case_id": "company-05-1",
+  "question": "For Q2 2025, report revenue, COGS, operating expenses, operating profit, and gross margin.",
+  "human_review": null,
+  "run": {
+    "id": "64242cb7-2036-4f33-95f0-f21f71165eef",
+    "dataset_id": "company-05",
+    "dataset_hash": "4d5c142db38f5fee914e62962c6635d010a0fe8bb360154728eb092117cb0a93",
+    "question": "For Q2 2025, report revenue, COGS, operating expenses, operating profit, and gross margin.",
+    "analysis": {
+      "decision": "answer",
+      "summary": "Q2 2025 was fully covered and generated $19,000 of operating profit on $345,000 of revenue.",
+      "findings": [
+        {
+          "text": "Q2 2025 revenue was $345,000, COGS was $231,000, and operating expenses were $95,000.",
+          "evidence_ids": [
+            "company-05:2025-Q2:revenue",
+            "company-05:2025-Q2:cogs",
+            "company-05:2025-Q2:operating_expenses"
+          ]
+        },
+        {
+          "text": "Q2 2025 operating profit was $19,000 and gross margin was 33.04%.",
+          "evidence_ids": [
+            "company-05:2025-Q2:operating_profit",
+            "company-05:2025-Q2:gross_margin"
+          ]
+        }
+      ],
+      "limitations": [],
+      "suggested_questions": []
+    },
+    "trace": [
+      {
+        "step": 1,
+        "tool": "inspect_dataset",
+        "arguments": {},
+        "result": {
+          "dataset_id": "company-05",
+          "name": "Cobalt Services",
+          "currency": "USD",
+          "data_hash": "4d5c142db38f5fee914e62962c6635d010a0fe8bb360154728eb092117cb0a93",
+          "periods": [
+            {
+              "id": "2025-01",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-02",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-03",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-04",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-05",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-06",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-Q1",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-Q2",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-H1",
+              "complete": true,
+              "missing_months": []
+            }
+          ],
+          "metrics": [
+            "revenue",
+            "cogs",
+            "operating_expenses",
+            "gross_profit",
+            "operating_profit",
+            "gross_margin",
+            "operating_margin"
+          ],
+          "conventions": [
+            "Costs are positive expense amounts.",
+            "Margins use aggregate profits divided by aggregate revenue.",
+            "Missing periods and nonpositive ratio denominators return null.",
+            "Percentage changes require a positive baseline.",
+            "Only financial aggregates are available. No customer, supplier, price, volume or staffing evidence exists."
+          ]
+        },
+        "elapsed_ms": 0
+      },
+      {
+        "step": 2,
+        "tool": "calculate_metrics",
+        "arguments": {
+          "periods": [
+            "2025-Q2"
+          ],
+          "metrics": [
+            "revenue",
+            "cogs",
+            "operating_expenses",
+            "operating_profit",
+            "gross_margin"
+          ]
+        },
+        "result": {
+          "facts": [
+            {
+              "id": "company-05:2025-Q2:revenue",
+              "dataset_id": "company-05",
+              "period": "2025-Q2",
+              "metric": "revenue",
+              "value": 345000,
+              "unit": "USD",
+              "formula": "sum(revenue)",
+              "source_row_ids": [
+                "company-05-2025-04",
+                "company-05-2025-05",
+                "company-05-2025-06"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-05:2025-Q2:cogs",
+              "dataset_id": "company-05",
+              "period": "2025-Q2",
+              "metric": "cogs",
+              "value": 231000,
+              "unit": "USD",
+              "formula": "sum(cogs)",
+              "source_row_ids": [
+                "company-05-2025-04",
+                "company-05-2025-05",
+                "company-05-2025-06"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-05:2025-Q2:operating_expenses",
+              "dataset_id": "company-05",
+              "period": "2025-Q2",
+              "metric": "operating_expenses",
+              "value": 95000,
+              "unit": "USD",
+              "formula": "sum(operating_expenses)",
+              "source_row_ids": [
+                "company-05-2025-04",
+                "company-05-2025-05",
+                "company-05-2025-06"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-05:2025-Q2:operating_profit",
+              "dataset_id": "company-05",
+              "period": "2025-Q2",
+              "metric": "operating_profit",
+              "value": 19000,
+              "unit": "USD",
+              "formula": "sum(revenue) - sum(cogs) - sum(operating_expenses)",
+              "source_row_ids": [
+                "company-05-2025-04",
+                "company-05-2025-05",
+                "company-05-2025-06"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-05:2025-Q2:gross_margin",
+              "dataset_id": "company-05",
+              "period": "2025-Q2",
+              "metric": "gross_margin",
+              "value": 33.043478,
+              "unit": "percent",
+              "formula": "(sum(revenue) - sum(cogs)) / sum(revenue) * 100",
+              "source_row_ids": [
+                "company-05-2025-04",
+                "company-05-2025-05",
+                "company-05-2025-06"
+              ],
+              "reason": null
+            }
+          ],
+          "coverage": [
+            {
+              "period": "2025-Q2",
+              "complete": true,
+              "missing_months": []
+            }
+          ]
+        },
+        "elapsed_ms": 0
+      },
+      {
+        "step": 3,
+        "tool": "submit_analysis",
+        "arguments": {
+          "decision": "answer",
+          "summary": "Q2 2025 was fully covered and generated $19,000 of operating profit on $345,000 of revenue.",
+          "findings": [
+            {
+              "text": "Q2 2025 revenue was $345,000, COGS was $231,000, and operating expenses were $95,000.",
+              "evidence_ids": [
+                "company-05:2025-Q2:revenue",
+                "company-05:2025-Q2:cogs",
+                "company-05:2025-Q2:operating_expenses"
+              ]
+            },
+            {
+              "text": "Q2 2025 operating profit was $19,000 and gross margin was 33.04%.",
+              "evidence_ids": [
+                "company-05:2025-Q2:operating_profit",
+                "company-05:2025-Q2:gross_margin"
+              ]
+            }
+          ],
+          "limitations": [],
+          "suggested_questions": []
+        },
+        "result": {
+          "accepted": true
+        },
+        "elapsed_ms": 1
+      }
+    ],
+    "facts": [
+      {
+        "id": "company-05:2025-Q2:revenue",
+        "dataset_id": "company-05",
+        "period": "2025-Q2",
+        "metric": "revenue",
+        "value": 345000,
+        "unit": "USD",
+        "formula": "sum(revenue)",
+        "source_row_ids": [
+          "company-05-2025-04",
+          "company-05-2025-05",
+          "company-05-2025-06"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-05:2025-Q2:cogs",
+        "dataset_id": "company-05",
+        "period": "2025-Q2",
+        "metric": "cogs",
+        "value": 231000,
+        "unit": "USD",
+        "formula": "sum(cogs)",
+        "source_row_ids": [
+          "company-05-2025-04",
+          "company-05-2025-05",
+          "company-05-2025-06"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-05:2025-Q2:operating_expenses",
+        "dataset_id": "company-05",
+        "period": "2025-Q2",
+        "metric": "operating_expenses",
+        "value": 95000,
+        "unit": "USD",
+        "formula": "sum(operating_expenses)",
+        "source_row_ids": [
+          "company-05-2025-04",
+          "company-05-2025-05",
+          "company-05-2025-06"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-05:2025-Q2:operating_profit",
+        "dataset_id": "company-05",
+        "period": "2025-Q2",
+        "metric": "operating_profit",
+        "value": 19000,
+        "unit": "USD",
+        "formula": "sum(revenue) - sum(cogs) - sum(operating_expenses)",
+        "source_row_ids": [
+          "company-05-2025-04",
+          "company-05-2025-05",
+          "company-05-2025-06"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-05:2025-Q2:gross_margin",
+        "dataset_id": "company-05",
+        "period": "2025-Q2",
+        "metric": "gross_margin",
+        "value": 33.043478,
+        "unit": "percent",
+        "formula": "(sum(revenue) - sum(cogs)) / sum(revenue) * 100",
+        "source_row_ids": [
+          "company-05-2025-04",
+          "company-05-2025-05",
+          "company-05-2025-06"
+        ],
+        "reason": null
+      }
+    ],
+    "provider": "openai",
+    "model": "gpt-5.6-luna",
+    "elapsed_ms": 4541,
+    "usage": {
+      "input_tokens": 3745,
+      "output_tokens": 278
+    },
+    "mode": "live",
+    "created_at": "2026-09-21T00:07:31.469Z",
+    "validation": {
+      "references_valid": true,
+      "semantic_review": "not_reviewed"
+    }
+  },
+  "execution": "success",
+  "evidence_checks": [
+    {
+      "id": "company-05:2025-Q2:revenue",
+      "match": true
+    },
+    {
+      "id": "company-05:2025-Q2:cogs",
+      "match": true
+    },
+    {
+      "id": "company-05:2025-Q2:operating_expenses",
+      "match": true
+    },
+    {
+      "id": "company-05:2025-Q2:operating_profit",
+      "match": true
+    },
+    {
+      "id": "company-05:2025-Q2:gross_margin",
+      "match": true
+    }
+  ],
+  "evidence_coverage": true,
+  "elapsed_seconds": 4.55
+}

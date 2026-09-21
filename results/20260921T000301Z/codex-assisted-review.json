@@ -1,0 +1,102 @@
+{
+  "reviewer_type": "Codex-assisted semantic review; not independent human review",
+  "scope": "Full summary, findings, limitations, citations, and trace against case rubrics",
+  "reviews": [
+    {
+      "case_id": "company-04-1",
+      "task_complete": true,
+      "numbers_correct": true,
+      "claims_supported": true,
+      "uncertainty_handled": true,
+      "notes": "All five Q2 values and coverage correct."
+    },
+    {
+      "case_id": "company-04-2",
+      "task_complete": true,
+      "numbers_correct": true,
+      "claims_supported": true,
+      "uncertainty_handled": true,
+      "notes": "Correct signed bridge and percentages. Subtracted COGS magnitude could be worded more clearly."
+    },
+    {
+      "case_id": "company-04-3",
+      "task_complete": true,
+      "numbers_correct": true,
+      "claims_supported": true,
+      "uncertainty_handled": true,
+      "notes": "Correct revenue driver and three-way monthly tie. Monthly calls request all four metrics; this demonstrates multistep investigation more strongly than selective account-specific retrieval."
+    },
+    {
+      "case_id": "company-04-4",
+      "task_complete": true,
+      "numbers_correct": true,
+      "claims_supported": true,
+      "uncertainty_handled": true,
+      "notes": "Correctly treats customer acquisition as unknown. Extra profit-bridge call is unnecessary but supported."
+    },
+    {
+      "case_id": "company-05-1",
+      "task_complete": false,
+      "numbers_correct": null,
+      "claims_supported": null,
+      "uncertainty_handled": null,
+      "notes": "Execution interrupted by a development-server configuration reload; no returned answer to grade."
+    },
+    {
+      "case_id": "company-05-2",
+      "task_complete": true,
+      "numbers_correct": true,
+      "claims_supported": true,
+      "uncertainty_handled": true,
+      "notes": "Correct -$78,500 bridge, percentages, and distinction between accounting and business causes."
+    },
+    {
+      "case_id": "company-05-3",
+      "task_complete": true,
+      "numbers_correct": true,
+      "claims_supported": true,
+      "uncertainty_handled": true,
+      "notes": "Correct COGS selection and June/March $35,000 increase as largest negative contribution."
+    },
+    {
+      "case_id": "company-05-4",
+      "task_complete": true,
+      "numbers_correct": true,
+      "claims_supported": true,
+      "uncertainty_handled": true,
+      "notes": "Correct amounts and 16.96 percentage-point margin decline. Supplier-price cause cannot be determined; opening No would be clearer as Cannot determine."
+    },
+    {
+      "case_id": "company-06-1",
+      "task_complete": false,
+      "numbers_correct": null,
+      "claims_supported": null,
+      "uncertainty_handled": null,
+      "notes": "Execution interrupted by a development-server configuration reload; no returned answer to grade."
+    },
+    {
+      "case_id": "company-06-2",
+      "task_complete": true,
+      "numbers_correct": true,
+      "claims_supported": true,
+      "uncertainty_handled": true,
+      "notes": "Correct Q1 values; rejects incomplete Q2 bridge and requests missing May."
+    },
+    {
+      "case_id": "company-06-3",
+      "task_complete": true,
+      "numbers_correct": true,
+      "claims_supported": true,
+      "uncertainty_handled": true,
+      "notes": "Correct coverage and unavailable-quarter conclusion. Recovered after invalid period-only citations were rejected and fresh metric evidence was retrieved."
+    },
+    {
+      "case_id": "company-06-4",
+      "task_complete": false,
+      "numbers_correct": false,
+      "claims_supported": false,
+      "uncertainty_handled": false,
+      "notes": "FAIL: endorses 11.11% conditionally while citing a null percentage-change fact. Does not establish that $80,000 covers April+June while $72,000 covers all Q1. Missing-May caveats do not repair the unsupported endorsement."
+    }
+  ]
+}

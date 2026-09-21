@@ -1,0 +1,21 @@
+{
+  "reviewer_type": "Codex-assisted semantic review; not independent human review",
+  "reviews": [
+    {
+      "case_id": "company-05-1",
+      "task_complete": true,
+      "numbers_correct": true,
+      "claims_supported": true,
+      "uncertainty_handled": true,
+      "notes": "All five values correct, including 33.04% gross margin. Summary contains supported numbers despite qualitative-summary prompt."
+    },
+    {
+      "case_id": "company-06-1",
+      "task_complete": true,
+      "numbers_correct": true,
+      "claims_supported": true,
+      "uncertainty_handled": true,
+      "notes": "All full-quarter metrics unavailable; missing May identified and April+June not treated as complete Q2."
+    }
+  ]
+}

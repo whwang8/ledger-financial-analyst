@@ -1,0 +1,21 @@
+{
+  "status": "needs_human_review",
+  "cases": 12,
+  "attempted": 12,
+  "execution_successes": 10,
+  "passed": null,
+  "reviewed": 0,
+  "provider": "openai",
+  "created_at": "20260921T000301Z",
+  "note": "12 tasks, 14 requests including 2 transport reruns. Codex-assisted review: 11/12 tasks passed; 1 misleading-premise failure. Independent human review is pending. Valid citations do not prove claim support.",
+  "requests_attempted": 14,
+  "rerun_execution_successes": 2,
+  "unique_tasks_with_answers": 12,
+  "codex_assisted": {
+    "initial_passes": 9,
+    "initial_semantic_failures": 1,
+    "initial_execution_failures": 2,
+    "passing_unique_tasks_after_transport_reruns": 11,
+    "reviewed_unique_tasks": 12
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "status": "needs_human_review",
+  "cases": 12,
+  "attempted": 2,
+  "execution_successes": 2,
+  "passed": null,
+  "reviewed": 0,
+  "provider": "openai",
+  "created_at": "20260921T000726Z",
+  "note": "2 live tasks attempted. Answer accuracy is unscored until human review. Evidence coverage is not answer correctness."
+}

@@ -1,0 +1,632 @@
+{
+  "case_id": "company-06-3",
+  "question": "Which months are available in each quarter? Is Q2 usable for a complete quarterly comparison?",
+  "human_review": null,
+  "run": {
+    "id": "17f5ea81-c993-4251-8a31-758ce9117c72",
+    "dataset_id": "company-06",
+    "dataset_hash": "24a51237001d04c27374019a00394a50eb51dfd6b9027f3f64bb578a72a6725f",
+    "question": "Which months are available in each quarter? Is Q2 usable for a complete quarterly comparison?",
+    "analysis": {
+      "decision": "answer",
+      "summary": "Q1 has all three months; Q2 is missing May 2025, so it is not usable as a complete quarterly comparison.",
+      "findings": [
+        {
+          "text": "Q1 2025 includes January, February, and March, with a complete quarterly revenue fact available.",
+          "evidence_ids": [
+            "company-06:2025-01:revenue",
+            "company-06:2025-02:revenue",
+            "company-06:2025-03:revenue",
+            "company-06:2025-Q1:revenue"
+          ]
+        },
+        {
+          "text": "Q2 2025 includes April and June, but May is missing; the Q2 revenue fact is unavailable because of that missing month, so Q2 cannot support a complete quarterly comparison with Q1.",
+          "evidence_ids": [
+            "company-06:2025-04:revenue",
+            "company-06:2025-05:revenue",
+            "company-06:2025-06:revenue",
+            "company-06:2025-Q2:revenue"
+          ]
+        }
+      ],
+      "limitations": [
+        "May is unknown, not zero.",
+        "Only January through June 2025 are covered."
+      ],
+      "suggested_questions": []
+    },
+    "trace": [
+      {
+        "step": 1,
+        "tool": "inspect_dataset",
+        "arguments": {},
+        "result": {
+          "dataset_id": "company-06",
+          "name": "Harbor Industries",
+          "currency": "USD",
+          "data_hash": "24a51237001d04c27374019a00394a50eb51dfd6b9027f3f64bb578a72a6725f",
+          "periods": [
+            {
+              "id": "2025-01",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-02",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-03",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-04",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-05",
+              "complete": false,
+              "missing_months": [
+                "2025-05"
+              ]
+            },
+            {
+              "id": "2025-06",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-Q1",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-Q2",
+              "complete": false,
+              "missing_months": [
+                "2025-05"
+              ]
+            },
+            {
+              "id": "2025-H1",
+              "complete": false,
+              "missing_months": [
+                "2025-05"
+              ]
+            }
+          ],
+          "metrics": [
+            "revenue",
+            "cogs",
+            "operating_expenses",
+            "gross_profit",
+            "operating_profit",
+            "gross_margin",
+            "operating_margin"
+          ],
+          "conventions": [
+            "Costs are positive expense amounts.",
+            "Margins use aggregate profits divided by aggregate revenue.",
+            "Missing periods and nonpositive ratio denominators return null.",
+            "Percentage changes require a positive baseline.",
+            "Only financial aggregates are available. No customer, supplier, price, volume or staffing evidence exists."
+          ]
+        },
+        "elapsed_ms": 0
+      },
+      {
+        "step": 2,
+        "tool": "submit_analysis",
+        "arguments": {
+          "decision": "answer",
+          "summary": "Q1 has all three months; Q2 is missing May 2025, so it is not usable as a complete quarterly comparison.",
+          "findings": [
+            {
+              "text": "Q1 2025 includes January, February, and March, and the quarter is marked complete.",
+              "evidence_ids": [
+                "2025-01",
+                "2025-02",
+                "2025-03",
+                "2025-Q1"
+              ]
+            },
+            {
+              "text": "Q2 2025 has April and June available, but May 2025 is missing; therefore Q2 is incomplete and a complete Q2-versus-Q1 quarterly comparison is unavailable.",
+              "evidence_ids": [
+                "2025-04",
+                "2025-05",
+                "2025-06",
+                "2025-Q2"
+              ]
+            }
+          ],
+          "limitations": [
+            "May is unknown, not zero; Q2 totals and margins for a full quarter should not be treated as available.",
+            "The dataset covers January through June 2025 only."
+          ],
+          "suggested_questions": []
+        },
+        "result": {
+          "error": "Unknown evidence reference or malformed finding"
+        },
+        "elapsed_ms": 0
+      },
+      {
+        "step": 3,
+        "tool": "calculate_metrics",
+        "arguments": {
+          "periods": [
+            "2025-01",
+            "2025-02",
+            "2025-03",
+            "2025-04",
+            "2025-05",
+            "2025-06",
+            "2025-Q1",
+            "2025-Q2"
+          ],
+          "metrics": [
+            "revenue"
+          ]
+        },
+        "result": {
+          "facts": [
+            {
+              "id": "company-06:2025-01:revenue",
+              "dataset_id": "company-06",
+              "period": "2025-01",
+              "metric": "revenue",
+              "value": 100000,
+              "unit": "USD",
+              "formula": "sum(revenue)",
+              "source_row_ids": [
+                "company-06-2025-01"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-06:2025-02:revenue",
+              "dataset_id": "company-06",
+              "period": "2025-02",
+              "metric": "revenue",
+              "value": 110000,
+              "unit": "USD",
+              "formula": "sum(revenue)",
+              "source_row_ids": [
+                "company-06-2025-02"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-06:2025-03:revenue",
+              "dataset_id": "company-06",
+              "period": "2025-03",
+              "metric": "revenue",
+              "value": 120000,
+              "unit": "USD",
+              "formula": "sum(revenue)",
+              "source_row_ids": [
+                "company-06-2025-03"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-06:2025-04:revenue",
+              "dataset_id": "company-06",
+              "period": "2025-04",
+              "metric": "revenue",
+              "value": 140000,
+              "unit": "USD",
+              "formula": "sum(revenue)",
+              "source_row_ids": [
+                "company-06-2025-04"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-06:2025-05:revenue",
+              "dataset_id": "company-06",
+              "period": "2025-05",
+              "metric": "revenue",
+              "value": null,
+              "unit": "USD",
+              "formula": "sum(revenue)",
+              "source_row_ids": [],
+              "reason": "Missing months: 2025-05"
+            },
+            {
+              "id": "company-06:2025-06:revenue",
+              "dataset_id": "company-06",
+              "period": "2025-06",
+              "metric": "revenue",
+              "value": 160000,
+              "unit": "USD",
+              "formula": "sum(revenue)",
+              "source_row_ids": [
+                "company-06-2025-06"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-06:2025-Q1:revenue",
+              "dataset_id": "company-06",
+              "period": "2025-Q1",
+              "metric": "revenue",
+              "value": 330000,
+              "unit": "USD",
+              "formula": "sum(revenue)",
+              "source_row_ids": [
+                "company-06-2025-01",
+                "company-06-2025-02",
+                "company-06-2025-03"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-06:2025-Q2:revenue",
+              "dataset_id": "company-06",
+              "period": "2025-Q2",
+              "metric": "revenue",
+              "value": null,
+              "unit": "USD",
+              "formula": "sum(revenue)",
+              "source_row_ids": [
+                "company-06-2025-04",
+                "company-06-2025-06"
+              ],
+              "reason": "Missing months: 2025-05"
+            },
+            {
+              "id": "company-06:2025-01\u21922025-02:revenue:change",
+              "dataset_id": "company-06",
+              "period": "2025-01\u21922025-02",
+              "metric": "revenue",
+              "value": 10000,
+              "unit": "USD",
+              "formula": "revenue(2025-02) - revenue(2025-01)",
+              "source_row_ids": [
+                "company-06-2025-01",
+                "company-06-2025-02"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-06:2025-02\u21922025-03:revenue:change",
+              "dataset_id": "company-06",
+              "period": "2025-02\u21922025-03",
+              "metric": "revenue",
+              "value": 10000,
+              "unit": "USD",
+              "formula": "revenue(2025-03) - revenue(2025-02)",
+              "source_row_ids": [
+                "company-06-2025-02",
+                "company-06-2025-03"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-06:2025-03\u21922025-04:revenue:change",
+              "dataset_id": "company-06",
+              "period": "2025-03\u21922025-04",
+              "metric": "revenue",
+              "value": 20000,
+              "unit": "USD",
+              "formula": "revenue(2025-04) - revenue(2025-03)",
+              "source_row_ids": [
+                "company-06-2025-03",
+                "company-06-2025-04"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-06:2025-04\u21922025-05:revenue:change",
+              "dataset_id": "company-06",
+              "period": "2025-04\u21922025-05",
+              "metric": "revenue",
+              "value": null,
+              "unit": "USD",
+              "formula": "revenue(2025-05) - revenue(2025-04)",
+              "source_row_ids": [
+                "company-06-2025-04"
+              ],
+              "reason": "Incomplete or undefined comparison"
+            },
+            {
+              "id": "company-06:2025-05\u21922025-06:revenue:change",
+              "dataset_id": "company-06",
+              "period": "2025-05\u21922025-06",
+              "metric": "revenue",
+              "value": null,
+              "unit": "USD",
+              "formula": "revenue(2025-06) - revenue(2025-05)",
+              "source_row_ids": [
+                "company-06-2025-06"
+              ],
+              "reason": "Incomplete or undefined comparison"
+            }
+          ],
+          "coverage": [
+            {
+              "period": "2025-01",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "period": "2025-02",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "period": "2025-03",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "period": "2025-04",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "period": "2025-05",
+              "complete": false,
+              "missing_months": [
+                "2025-05"
+              ]
+            },
+            {
+              "period": "2025-06",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "period": "2025-Q1",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "period": "2025-Q2",
+              "complete": false,
+              "missing_months": [
+                "2025-05"
+              ]
+            }
+          ]
+        },
+        "elapsed_ms": 0
+      },
+      {
+        "step": 4,
+        "tool": "submit_analysis",
+        "arguments": {
+          "decision": "answer",
+          "summary": "Q1 has all three months; Q2 is missing May 2025, so it is not usable as a complete quarterly comparison.",
+          "findings": [
+            {
+              "text": "Q1 2025 includes January, February, and March, with a complete quarterly revenue fact available.",
+              "evidence_ids": [
+                "company-06:2025-01:revenue",
+                "company-06:2025-02:revenue",
+                "company-06:2025-03:revenue",
+                "company-06:2025-Q1:revenue"
+              ]
+            },
+            {
+              "text": "Q2 2025 includes April and June, but May is missing; the Q2 revenue fact is unavailable because of that missing month, so Q2 cannot support a complete quarterly comparison with Q1.",
+              "evidence_ids": [
+                "company-06:2025-04:revenue",
+                "company-06:2025-05:revenue",
+                "company-06:2025-06:revenue",
+                "company-06:2025-Q2:revenue"
+              ]
+            }
+          ],
+          "limitations": [
+            "May is unknown, not zero.",
+            "Only January through June 2025 are covered."
+          ],
+          "suggested_questions": []
+        },
+        "result": {
+          "accepted": true
+        },
+        "elapsed_ms": 0
+      }
+    ],
+    "facts": [
+      {
+        "id": "company-06:2025-01:revenue",
+        "dataset_id": "company-06",
+        "period": "2025-01",
+        "metric": "revenue",
+        "value": 100000,
+        "unit": "USD",
+        "formula": "sum(revenue)",
+        "source_row_ids": [
+          "company-06-2025-01"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-06:2025-02:revenue",
+        "dataset_id": "company-06",
+        "period": "2025-02",
+        "metric": "revenue",
+        "value": 110000,
+        "unit": "USD",
+        "formula": "sum(revenue)",
+        "source_row_ids": [
+          "company-06-2025-02"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-06:2025-03:revenue",
+        "dataset_id": "company-06",
+        "period": "2025-03",
+        "metric": "revenue",
+        "value": 120000,
+        "unit": "USD",
+        "formula": "sum(revenue)",
+        "source_row_ids": [
+          "company-06-2025-03"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-06:2025-04:revenue",
+        "dataset_id": "company-06",
+        "period": "2025-04",
+        "metric": "revenue",
+        "value": 140000,
+        "unit": "USD",
+        "formula": "sum(revenue)",
+        "source_row_ids": [
+          "company-06-2025-04"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-06:2025-05:revenue",
+        "dataset_id": "company-06",
+        "period": "2025-05",
+        "metric": "revenue",
+        "value": null,
+        "unit": "USD",
+        "formula": "sum(revenue)",
+        "source_row_ids": [],
+        "reason": "Missing months: 2025-05"
+      },
+      {
+        "id": "company-06:2025-06:revenue",
+        "dataset_id": "company-06",
+        "period": "2025-06",
+        "metric": "revenue",
+        "value": 160000,
+        "unit": "USD",
+        "formula": "sum(revenue)",
+        "source_row_ids": [
+          "company-06-2025-06"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-06:2025-Q1:revenue",
+        "dataset_id": "company-06",
+        "period": "2025-Q1",
+        "metric": "revenue",
+        "value": 330000,
+        "unit": "USD",
+        "formula": "sum(revenue)",
+        "source_row_ids": [
+          "company-06-2025-01",
+          "company-06-2025-02",
+          "company-06-2025-03"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-06:2025-Q2:revenue",
+        "dataset_id": "company-06",
+        "period": "2025-Q2",
+        "metric": "revenue",
+        "value": null,
+        "unit": "USD",
+        "formula": "sum(revenue)",
+        "source_row_ids": [
+          "company-06-2025-04",
+          "company-06-2025-06"
+        ],
+        "reason": "Missing months: 2025-05"
+      },
+      {
+        "id": "company-06:2025-01\u21922025-02:revenue:change",
+        "dataset_id": "company-06",
+        "period": "2025-01\u21922025-02",
+        "metric": "revenue",
+        "value": 10000,
+        "unit": "USD",
+        "formula": "revenue(2025-02) - revenue(2025-01)",
+        "source_row_ids": [
+          "company-06-2025-01",
+          "company-06-2025-02"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-06:2025-02\u21922025-03:revenue:change",
+        "dataset_id": "company-06",
+        "period": "2025-02\u21922025-03",
+        "metric": "revenue",
+        "value": 10000,
+        "unit": "USD",
+        "formula": "revenue(2025-03) - revenue(2025-02)",
+        "source_row_ids": [
+          "company-06-2025-02",
+          "company-06-2025-03"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-06:2025-03\u21922025-04:revenue:change",
+        "dataset_id": "company-06",
+        "period": "2025-03\u21922025-04",
+        "metric": "revenue",
+        "value": 20000,
+        "unit": "USD",
+        "formula": "revenue(2025-04) - revenue(2025-03)",
+        "source_row_ids": [
+          "company-06-2025-03",
+          "company-06-2025-04"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-06:2025-04\u21922025-05:revenue:change",
+        "dataset_id": "company-06",
+        "period": "2025-04\u21922025-05",
+        "metric": "revenue",
+        "value": null,
+        "unit": "USD",
+        "formula": "revenue(2025-05) - revenue(2025-04)",
+        "source_row_ids": [
+          "company-06-2025-04"
+        ],
+        "reason": "Incomplete or undefined comparison"
+      },
+      {
+        "id": "company-06:2025-05\u21922025-06:revenue:change",
+        "dataset_id": "company-06",
+        "period": "2025-05\u21922025-06",
+        "metric": "revenue",
+        "value": null,
+        "unit": "USD",
+        "formula": "revenue(2025-06) - revenue(2025-05)",
+        "source_row_ids": [
+          "company-06-2025-06"
+        ],
+        "reason": "Incomplete or undefined comparison"
+      }
+    ],
+    "provider": "openai",
+    "model": "gpt-5.6-luna",
+    "elapsed_ms": 16185,
+    "usage": {
+      "input_tokens": 6503,
+      "output_tokens": 779
+    },
+    "mode": "live",
+    "created_at": "2026-09-21T00:06:21.887Z",
+    "validation": {
+      "references_valid": true,
+      "semantic_review": "not_reviewed"
+    }
+  },
+  "execution": "success",
+  "evidence_checks": [],
+  "evidence_coverage": null,
+  "elapsed_seconds": 16.38
+}

@@ -1,0 +1,50 @@
+{
+  "id": "company-02",
+  "name": "Alder Studio",
+  "currency": "USD",
+  "synthetic": true,
+  "rows": [
+    {
+      "row_id": "company-02-2025-01",
+      "month": "2025-01",
+      "revenue": 70000,
+      "cogs": 35000,
+      "operating_expenses": 14000
+    },
+    {
+      "row_id": "company-02-2025-02",
+      "month": "2025-02",
+      "revenue": 75000,
+      "cogs": 37500,
+      "operating_expenses": 14000
+    },
+    {
+      "row_id": "company-02-2025-03",
+      "month": "2025-03",
+      "revenue": 80000,
+      "cogs": 40000,
+      "operating_expenses": 14000
+    },
+    {
+      "row_id": "company-02-2025-04",
+      "month": "2025-04",
+      "revenue": 85000,
+      "cogs": 42500,
+      "operating_expenses": 14000
+    },
+    {
+      "row_id": "company-02-2025-05",
+      "month": "2025-05",
+      "revenue": 90000,
+      "cogs": 45000,
+      "operating_expenses": 14000
+    },
+    {
+      "row_id": "company-02-2025-06",
+      "month": "2025-06",
+      "revenue": 95000,
+      "cogs": 47500,
+      "operating_expenses": 14000
+    }
+  ]
+}

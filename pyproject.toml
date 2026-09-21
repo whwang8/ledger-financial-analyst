@@ -1,0 +1,8 @@
+[project]
+name = "ledger-financial-analyst"
+version = "0.1.0"
+description = "Deterministic Python financial evidence for a tool-using LLM analyst"
+requires-python = ">=3.10"
+dependencies = []
+[tool.pytest.ini_options]
+pythonpath = ["python"]

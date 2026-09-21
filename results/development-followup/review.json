@@ -1,0 +1,7 @@
+{
+  "reviewer_type": "Codex-assisted semantic review; not independent human review",
+  "task_complete": true,
+  "numbers_correct": true,
+  "claims_supported": false,
+  "notes": "Correct supplier-price uncertainty and fresh tool use with history. Findings 2 and 3 attach COGS citations to dataset-coverage statements and general investigative advice; those particular citations do not establish those statements. Coverage is supported by inspect_dataset; advice belongs in next steps. Shows citation-entailment weakness."
+}

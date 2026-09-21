@@ -1,0 +1,1108 @@
+{
+  "case_id": "company-04-3",
+  "question": "Investigate the largest positive account contribution to the Q1-to-Q2 profit change. Compare corresponding months across the quarters and identify the biggest contributing month.",
+  "human_review": null,
+  "run": {
+    "id": "126ad52a-aa13-4c5f-ab6e-141378a17a17",
+    "dataset_id": "company-04",
+    "dataset_hash": "56eb057187774fa57bb8ef401690f289e99c4022a8a9ce2ea5e6f32935085cec",
+    "question": "Investigate the largest positive account contribution to the Q1-to-Q2 profit change. Compare corresponding months across the quarters and identify the biggest contributing month.",
+    "analysis": {
+      "decision": "answer",
+      "summary": "Revenue is the largest positive account contribution to the Q1-to-Q2 operating-profit increase; the corresponding-month comparison is a three-way tie, with April, May, and June each contributing equally.",
+      "findings": [
+        {
+          "text": "From Q1 to Q2, revenue contributed +$120,000 to the operating-profit change, exceeding COGS's -$72,000 contribution and operating expenses' $0 contribution. The resulting operating-profit increase was $48,000.",
+          "evidence_ids": [
+            "company-04:2025-Q1\u21922025-Q2:revenue:profit_contribution",
+            "company-04:2025-Q1\u21922025-Q2:cogs:profit_contribution",
+            "company-04:2025-Q1\u21922025-Q2:operating_expenses:profit_contribution",
+            "company-04:2025-Q1\u21922025-Q2:operating_profit:profit_change"
+          ]
+        },
+        {
+          "text": "Each corresponding month had the same revenue increase: April versus January was +$40,000, May versus February was +$40,000, and June versus March was +$40,000. Therefore, there is no single biggest month; April, May, and June tie as the biggest revenue-contribution months.",
+          "evidence_ids": [
+            "company-04:2025-01\u21922025-04:revenue:change",
+            "company-04:2025-02\u21922025-05:revenue:change",
+            "company-04:2025-03\u21922025-06:revenue:change"
+          ]
+        },
+        {
+          "text": "In each corresponding-month comparison, COGS increased by $24,000, which is a negative profit contribution, while operating expenses changed by $0; thus each month\u2019s net operating-profit change was +$16,000.",
+          "evidence_ids": [
+            "company-04:2025-01\u21922025-04:cogs:change",
+            "company-04:2025-02\u21922025-05:cogs:change",
+            "company-04:2025-03\u21922025-06:cogs:change",
+            "company-04:2025-01\u21922025-04:operating_expenses:change",
+            "company-04:2025-02\u21922025-05:operating_expenses:change",
+            "company-04:2025-03\u21922025-06:operating_expenses:change",
+            "company-04:2025-01\u21922025-04:operating_profit:change",
+            "company-04:2025-02\u21922025-05:operating_profit:change",
+            "company-04:2025-03\u21922025-06:operating_profit:change"
+          ]
+        }
+      ],
+      "limitations": [
+        "These are accounting contributions, not proof of the business causes of the revenue or COGS changes; the dataset contains no customer, price, volume, product-mix, supplier, or staffing evidence."
+      ],
+      "suggested_questions": [
+        "Would you like the Q1-to-Q2 revenue and COGS changes investigated using any additional operational data?"
+      ]
+    },
+    "trace": [
+      {
+        "step": 1,
+        "tool": "inspect_dataset",
+        "arguments": {},
+        "result": {
+          "dataset_id": "company-04",
+          "name": "Juniper Systems",
+          "currency": "USD",
+          "data_hash": "56eb057187774fa57bb8ef401690f289e99c4022a8a9ce2ea5e6f32935085cec",
+          "periods": [
+            {
+              "id": "2025-01",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-02",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-03",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-04",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-05",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-06",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-Q1",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-Q2",
+              "complete": true,
+              "missing_months": []
+            },
+            {
+              "id": "2025-H1",
+              "complete": true,
+              "missing_months": []
+            }
+          ],
+          "metrics": [
+            "revenue",
+            "cogs",
+            "operating_expenses",
+            "gross_profit",
+            "operating_profit",
+            "gross_margin",
+            "operating_margin"
+          ],
+          "conventions": [
+            "Costs are positive expense amounts.",
+            "Margins use aggregate profits divided by aggregate revenue.",
+            "Missing periods and nonpositive ratio denominators return null.",
+            "Percentage changes require a positive baseline.",
+            "Only financial aggregates are available. No customer, supplier, price, volume or staffing evidence exists."
+          ]
+        },
+        "elapsed_ms": 0
+      },
+      {
+        "step": 2,
+        "tool": "explain_profit_change",
+        "arguments": {
+          "from_period": "2025-Q1",
+          "to_period": "2025-Q2"
+        },
+        "result": {
+          "complete": true,
+          "missing_months": [],
+          "facts": [
+            {
+              "id": "company-04:2025-Q1\u21922025-Q2:revenue:profit_contribution",
+              "dataset_id": "company-04",
+              "period": "2025-Q1\u21922025-Q2",
+              "metric": "revenue",
+              "value": 120000,
+              "unit": "USD",
+              "formula": "1 * (revenue(2025-Q2) - revenue(2025-Q1))",
+              "source_row_ids": [
+                "company-04-2025-01",
+                "company-04-2025-02",
+                "company-04-2025-03",
+                "company-04-2025-04",
+                "company-04-2025-05",
+                "company-04-2025-06"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-Q1\u21922025-Q2:cogs:profit_contribution",
+              "dataset_id": "company-04",
+              "period": "2025-Q1\u21922025-Q2",
+              "metric": "cogs",
+              "value": -72000,
+              "unit": "USD",
+              "formula": "-1 * (cogs(2025-Q2) - cogs(2025-Q1))",
+              "source_row_ids": [
+                "company-04-2025-01",
+                "company-04-2025-02",
+                "company-04-2025-03",
+                "company-04-2025-04",
+                "company-04-2025-05",
+                "company-04-2025-06"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-Q1\u21922025-Q2:operating_expenses:profit_contribution",
+              "dataset_id": "company-04",
+              "period": "2025-Q1\u21922025-Q2",
+              "metric": "operating_expenses",
+              "value": 0,
+              "unit": "USD",
+              "formula": "-1 * (operating_expenses(2025-Q2) - operating_expenses(2025-Q1))",
+              "source_row_ids": [
+                "company-04-2025-01",
+                "company-04-2025-02",
+                "company-04-2025-03",
+                "company-04-2025-04",
+                "company-04-2025-05",
+                "company-04-2025-06"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-Q1\u21922025-Q2:operating_profit:profit_change",
+              "dataset_id": "company-04",
+              "period": "2025-Q1\u21922025-Q2",
+              "metric": "operating_profit",
+              "value": 48000,
+              "unit": "USD",
+              "formula": "change(revenue) - change(cogs) - change(operating_expenses)",
+              "source_row_ids": [
+                "company-04-2025-01",
+                "company-04-2025-02",
+                "company-04-2025-03",
+                "company-04-2025-04",
+                "company-04-2025-05",
+                "company-04-2025-06"
+              ],
+              "reason": null
+            }
+          ]
+        },
+        "elapsed_ms": 0
+      },
+      {
+        "step": 3,
+        "tool": "compare_periods",
+        "arguments": {
+          "from_period": "2025-01",
+          "to_period": "2025-04",
+          "metrics": [
+            "revenue",
+            "cogs",
+            "operating_expenses",
+            "operating_profit"
+          ]
+        },
+        "result": {
+          "complete": true,
+          "missing_months": [],
+          "facts": [
+            {
+              "id": "company-04:2025-01\u21922025-04:revenue:change",
+              "dataset_id": "company-04",
+              "period": "2025-01\u21922025-04",
+              "metric": "revenue",
+              "value": 40000,
+              "unit": "USD",
+              "formula": "revenue(2025-04) - revenue(2025-01)",
+              "source_row_ids": [
+                "company-04-2025-01",
+                "company-04-2025-04"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-01\u21922025-04:revenue:percent_change",
+              "dataset_id": "company-04",
+              "period": "2025-01\u21922025-04",
+              "metric": "revenue",
+              "value": 40,
+              "unit": "percent",
+              "formula": "(revenue(2025-04) - revenue(2025-01)) / revenue(2025-01) * 100",
+              "source_row_ids": [
+                "company-04-2025-01",
+                "company-04-2025-04"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-01\u21922025-04:cogs:change",
+              "dataset_id": "company-04",
+              "period": "2025-01\u21922025-04",
+              "metric": "cogs",
+              "value": 24000,
+              "unit": "USD",
+              "formula": "cogs(2025-04) - cogs(2025-01)",
+              "source_row_ids": [
+                "company-04-2025-01",
+                "company-04-2025-04"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-01\u21922025-04:cogs:percent_change",
+              "dataset_id": "company-04",
+              "period": "2025-01\u21922025-04",
+              "metric": "cogs",
+              "value": 40,
+              "unit": "percent",
+              "formula": "(cogs(2025-04) - cogs(2025-01)) / cogs(2025-01) * 100",
+              "source_row_ids": [
+                "company-04-2025-01",
+                "company-04-2025-04"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-01\u21922025-04:operating_expenses:change",
+              "dataset_id": "company-04",
+              "period": "2025-01\u21922025-04",
+              "metric": "operating_expenses",
+              "value": 0,
+              "unit": "USD",
+              "formula": "operating_expenses(2025-04) - operating_expenses(2025-01)",
+              "source_row_ids": [
+                "company-04-2025-01",
+                "company-04-2025-04"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-01\u21922025-04:operating_expenses:percent_change",
+              "dataset_id": "company-04",
+              "period": "2025-01\u21922025-04",
+              "metric": "operating_expenses",
+              "value": 0,
+              "unit": "percent",
+              "formula": "(operating_expenses(2025-04) - operating_expenses(2025-01)) / operating_expenses(2025-01) * 100",
+              "source_row_ids": [
+                "company-04-2025-01",
+                "company-04-2025-04"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-01\u21922025-04:operating_profit:change",
+              "dataset_id": "company-04",
+              "period": "2025-01\u21922025-04",
+              "metric": "operating_profit",
+              "value": 16000,
+              "unit": "USD",
+              "formula": "operating_profit(2025-04) - operating_profit(2025-01)",
+              "source_row_ids": [
+                "company-04-2025-01",
+                "company-04-2025-04"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-01\u21922025-04:operating_profit:percent_change",
+              "dataset_id": "company-04",
+              "period": "2025-01\u21922025-04",
+              "metric": "operating_profit",
+              "value": 80,
+              "unit": "percent",
+              "formula": "(operating_profit(2025-04) - operating_profit(2025-01)) / operating_profit(2025-01) * 100",
+              "source_row_ids": [
+                "company-04-2025-01",
+                "company-04-2025-04"
+              ],
+              "reason": null
+            }
+          ]
+        },
+        "elapsed_ms": 0
+      },
+      {
+        "step": 4,
+        "tool": "compare_periods",
+        "arguments": {
+          "from_period": "2025-02",
+          "to_period": "2025-05",
+          "metrics": [
+            "revenue",
+            "cogs",
+            "operating_expenses",
+            "operating_profit"
+          ]
+        },
+        "result": {
+          "complete": true,
+          "missing_months": [],
+          "facts": [
+            {
+              "id": "company-04:2025-02\u21922025-05:revenue:change",
+              "dataset_id": "company-04",
+              "period": "2025-02\u21922025-05",
+              "metric": "revenue",
+              "value": 40000,
+              "unit": "USD",
+              "formula": "revenue(2025-05) - revenue(2025-02)",
+              "source_row_ids": [
+                "company-04-2025-02",
+                "company-04-2025-05"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-02\u21922025-05:revenue:percent_change",
+              "dataset_id": "company-04",
+              "period": "2025-02\u21922025-05",
+              "metric": "revenue",
+              "value": 36.363636,
+              "unit": "percent",
+              "formula": "(revenue(2025-05) - revenue(2025-02)) / revenue(2025-02) * 100",
+              "source_row_ids": [
+                "company-04-2025-02",
+                "company-04-2025-05"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-02\u21922025-05:cogs:change",
+              "dataset_id": "company-04",
+              "period": "2025-02\u21922025-05",
+              "metric": "cogs",
+              "value": 24000,
+              "unit": "USD",
+              "formula": "cogs(2025-05) - cogs(2025-02)",
+              "source_row_ids": [
+                "company-04-2025-02",
+                "company-04-2025-05"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-02\u21922025-05:cogs:percent_change",
+              "dataset_id": "company-04",
+              "period": "2025-02\u21922025-05",
+              "metric": "cogs",
+              "value": 36.363636,
+              "unit": "percent",
+              "formula": "(cogs(2025-05) - cogs(2025-02)) / cogs(2025-02) * 100",
+              "source_row_ids": [
+                "company-04-2025-02",
+                "company-04-2025-05"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-02\u21922025-05:operating_expenses:change",
+              "dataset_id": "company-04",
+              "period": "2025-02\u21922025-05",
+              "metric": "operating_expenses",
+              "value": 0,
+              "unit": "USD",
+              "formula": "operating_expenses(2025-05) - operating_expenses(2025-02)",
+              "source_row_ids": [
+                "company-04-2025-02",
+                "company-04-2025-05"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-02\u21922025-05:operating_expenses:percent_change",
+              "dataset_id": "company-04",
+              "period": "2025-02\u21922025-05",
+              "metric": "operating_expenses",
+              "value": 0,
+              "unit": "percent",
+              "formula": "(operating_expenses(2025-05) - operating_expenses(2025-02)) / operating_expenses(2025-02) * 100",
+              "source_row_ids": [
+                "company-04-2025-02",
+                "company-04-2025-05"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-02\u21922025-05:operating_profit:change",
+              "dataset_id": "company-04",
+              "period": "2025-02\u21922025-05",
+              "metric": "operating_profit",
+              "value": 16000,
+              "unit": "USD",
+              "formula": "operating_profit(2025-05) - operating_profit(2025-02)",
+              "source_row_ids": [
+                "company-04-2025-02",
+                "company-04-2025-05"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-02\u21922025-05:operating_profit:percent_change",
+              "dataset_id": "company-04",
+              "period": "2025-02\u21922025-05",
+              "metric": "operating_profit",
+              "value": 66.666667,
+              "unit": "percent",
+              "formula": "(operating_profit(2025-05) - operating_profit(2025-02)) / operating_profit(2025-02) * 100",
+              "source_row_ids": [
+                "company-04-2025-02",
+                "company-04-2025-05"
+              ],
+              "reason": null
+            }
+          ]
+        },
+        "elapsed_ms": 0
+      },
+      {
+        "step": 5,
+        "tool": "compare_periods",
+        "arguments": {
+          "from_period": "2025-03",
+          "to_period": "2025-06",
+          "metrics": [
+            "revenue",
+            "cogs",
+            "operating_expenses",
+            "operating_profit"
+          ]
+        },
+        "result": {
+          "complete": true,
+          "missing_months": [],
+          "facts": [
+            {
+              "id": "company-04:2025-03\u21922025-06:revenue:change",
+              "dataset_id": "company-04",
+              "period": "2025-03\u21922025-06",
+              "metric": "revenue",
+              "value": 40000,
+              "unit": "USD",
+              "formula": "revenue(2025-06) - revenue(2025-03)",
+              "source_row_ids": [
+                "company-04-2025-03",
+                "company-04-2025-06"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-03\u21922025-06:revenue:percent_change",
+              "dataset_id": "company-04",
+              "period": "2025-03\u21922025-06",
+              "metric": "revenue",
+              "value": 33.333333,
+              "unit": "percent",
+              "formula": "(revenue(2025-06) - revenue(2025-03)) / revenue(2025-03) * 100",
+              "source_row_ids": [
+                "company-04-2025-03",
+                "company-04-2025-06"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-03\u21922025-06:cogs:change",
+              "dataset_id": "company-04",
+              "period": "2025-03\u21922025-06",
+              "metric": "cogs",
+              "value": 24000,
+              "unit": "USD",
+              "formula": "cogs(2025-06) - cogs(2025-03)",
+              "source_row_ids": [
+                "company-04-2025-03",
+                "company-04-2025-06"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-03\u21922025-06:cogs:percent_change",
+              "dataset_id": "company-04",
+              "period": "2025-03\u21922025-06",
+              "metric": "cogs",
+              "value": 33.333333,
+              "unit": "percent",
+              "formula": "(cogs(2025-06) - cogs(2025-03)) / cogs(2025-03) * 100",
+              "source_row_ids": [
+                "company-04-2025-03",
+                "company-04-2025-06"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-03\u21922025-06:operating_expenses:change",
+              "dataset_id": "company-04",
+              "period": "2025-03\u21922025-06",
+              "metric": "operating_expenses",
+              "value": 0,
+              "unit": "USD",
+              "formula": "operating_expenses(2025-06) - operating_expenses(2025-03)",
+              "source_row_ids": [
+                "company-04-2025-03",
+                "company-04-2025-06"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-03\u21922025-06:operating_expenses:percent_change",
+              "dataset_id": "company-04",
+              "period": "2025-03\u21922025-06",
+              "metric": "operating_expenses",
+              "value": 0,
+              "unit": "percent",
+              "formula": "(operating_expenses(2025-06) - operating_expenses(2025-03)) / operating_expenses(2025-03) * 100",
+              "source_row_ids": [
+                "company-04-2025-03",
+                "company-04-2025-06"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-03\u21922025-06:operating_profit:change",
+              "dataset_id": "company-04",
+              "period": "2025-03\u21922025-06",
+              "metric": "operating_profit",
+              "value": 16000,
+              "unit": "USD",
+              "formula": "operating_profit(2025-06) - operating_profit(2025-03)",
+              "source_row_ids": [
+                "company-04-2025-03",
+                "company-04-2025-06"
+              ],
+              "reason": null
+            },
+            {
+              "id": "company-04:2025-03\u21922025-06:operating_profit:percent_change",
+              "dataset_id": "company-04",
+              "period": "2025-03\u21922025-06",
+              "metric": "operating_profit",
+              "value": 57.142857,
+              "unit": "percent",
+              "formula": "(operating_profit(2025-06) - operating_profit(2025-03)) / operating_profit(2025-03) * 100",
+              "source_row_ids": [
+                "company-04-2025-03",
+                "company-04-2025-06"
+              ],
+              "reason": null
+            }
+          ]
+        },
+        "elapsed_ms": 0
+      },
+      {
+        "step": 6,
+        "tool": "submit_analysis",
+        "arguments": {
+          "decision": "answer",
+          "summary": "Revenue is the largest positive account contribution to the Q1-to-Q2 operating-profit increase; the corresponding-month comparison is a three-way tie, with April, May, and June each contributing equally.",
+          "findings": [
+            {
+              "text": "From Q1 to Q2, revenue contributed +$120,000 to the operating-profit change, exceeding COGS's -$72,000 contribution and operating expenses' $0 contribution. The resulting operating-profit increase was $48,000.",
+              "evidence_ids": [
+                "company-04:2025-Q1\u21922025-Q2:revenue:profit_contribution",
+                "company-04:2025-Q1\u21922025-Q2:cogs:profit_contribution",
+                "company-04:2025-Q1\u21922025-Q2:operating_expenses:profit_contribution",
+                "company-04:2025-Q1\u21922025-Q2:operating_profit:profit_change"
+              ]
+            },
+            {
+              "text": "Each corresponding month had the same revenue increase: April versus January was +$40,000, May versus February was +$40,000, and June versus March was +$40,000. Therefore, there is no single biggest month; April, May, and June tie as the biggest revenue-contribution months.",
+              "evidence_ids": [
+                "company-04:2025-01\u21922025-04:revenue:change",
+                "company-04:2025-02\u21922025-05:revenue:change",
+                "company-04:2025-03\u21922025-06:revenue:change"
+              ]
+            },
+            {
+              "text": "In each corresponding-month comparison, COGS increased by $24,000, which is a negative profit contribution, while operating expenses changed by $0; thus each month\u2019s net operating-profit change was +$16,000.",
+              "evidence_ids": [
+                "company-04:2025-01\u21922025-04:cogs:change",
+                "company-04:2025-02\u21922025-05:cogs:change",
+                "company-04:2025-03\u21922025-06:cogs:change",
+                "company-04:2025-01\u21922025-04:operating_expenses:change",
+                "company-04:2025-02\u21922025-05:operating_expenses:change",
+                "company-04:2025-03\u21922025-06:operating_expenses:change",
+                "company-04:2025-01\u21922025-04:operating_profit:change",
+                "company-04:2025-02\u21922025-05:operating_profit:change",
+                "company-04:2025-03\u21922025-06:operating_profit:change"
+              ]
+            }
+          ],
+          "limitations": [
+            "These are accounting contributions, not proof of the business causes of the revenue or COGS changes; the dataset contains no customer, price, volume, product-mix, supplier, or staffing evidence."
+          ],
+          "suggested_questions": [
+            "Would you like the Q1-to-Q2 revenue and COGS changes investigated using any additional operational data?"
+          ]
+        },
+        "result": {
+          "accepted": true
+        },
+        "elapsed_ms": 0
+      }
+    ],
+    "facts": [
+      {
+        "id": "company-04:2025-Q1\u21922025-Q2:revenue:profit_contribution",
+        "dataset_id": "company-04",
+        "period": "2025-Q1\u21922025-Q2",
+        "metric": "revenue",
+        "value": 120000,
+        "unit": "USD",
+        "formula": "1 * (revenue(2025-Q2) - revenue(2025-Q1))",
+        "source_row_ids": [
+          "company-04-2025-01",
+          "company-04-2025-02",
+          "company-04-2025-03",
+          "company-04-2025-04",
+          "company-04-2025-05",
+          "company-04-2025-06"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-Q1\u21922025-Q2:cogs:profit_contribution",
+        "dataset_id": "company-04",
+        "period": "2025-Q1\u21922025-Q2",
+        "metric": "cogs",
+        "value": -72000,
+        "unit": "USD",
+        "formula": "-1 * (cogs(2025-Q2) - cogs(2025-Q1))",
+        "source_row_ids": [
+          "company-04-2025-01",
+          "company-04-2025-02",
+          "company-04-2025-03",
+          "company-04-2025-04",
+          "company-04-2025-05",
+          "company-04-2025-06"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-Q1\u21922025-Q2:operating_expenses:profit_contribution",
+        "dataset_id": "company-04",
+        "period": "2025-Q1\u21922025-Q2",
+        "metric": "operating_expenses",
+        "value": 0,
+        "unit": "USD",
+        "formula": "-1 * (operating_expenses(2025-Q2) - operating_expenses(2025-Q1))",
+        "source_row_ids": [
+          "company-04-2025-01",
+          "company-04-2025-02",
+          "company-04-2025-03",
+          "company-04-2025-04",
+          "company-04-2025-05",
+          "company-04-2025-06"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-Q1\u21922025-Q2:operating_profit:profit_change",
+        "dataset_id": "company-04",
+        "period": "2025-Q1\u21922025-Q2",
+        "metric": "operating_profit",
+        "value": 48000,
+        "unit": "USD",
+        "formula": "change(revenue) - change(cogs) - change(operating_expenses)",
+        "source_row_ids": [
+          "company-04-2025-01",
+          "company-04-2025-02",
+          "company-04-2025-03",
+          "company-04-2025-04",
+          "company-04-2025-05",
+          "company-04-2025-06"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-01\u21922025-04:revenue:change",
+        "dataset_id": "company-04",
+        "period": "2025-01\u21922025-04",
+        "metric": "revenue",
+        "value": 40000,
+        "unit": "USD",
+        "formula": "revenue(2025-04) - revenue(2025-01)",
+        "source_row_ids": [
+          "company-04-2025-01",
+          "company-04-2025-04"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-01\u21922025-04:revenue:percent_change",
+        "dataset_id": "company-04",
+        "period": "2025-01\u21922025-04",
+        "metric": "revenue",
+        "value": 40,
+        "unit": "percent",
+        "formula": "(revenue(2025-04) - revenue(2025-01)) / revenue(2025-01) * 100",
+        "source_row_ids": [
+          "company-04-2025-01",
+          "company-04-2025-04"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-01\u21922025-04:cogs:change",
+        "dataset_id": "company-04",
+        "period": "2025-01\u21922025-04",
+        "metric": "cogs",
+        "value": 24000,
+        "unit": "USD",
+        "formula": "cogs(2025-04) - cogs(2025-01)",
+        "source_row_ids": [
+          "company-04-2025-01",
+          "company-04-2025-04"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-01\u21922025-04:cogs:percent_change",
+        "dataset_id": "company-04",
+        "period": "2025-01\u21922025-04",
+        "metric": "cogs",
+        "value": 40,
+        "unit": "percent",
+        "formula": "(cogs(2025-04) - cogs(2025-01)) / cogs(2025-01) * 100",
+        "source_row_ids": [
+          "company-04-2025-01",
+          "company-04-2025-04"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-01\u21922025-04:operating_expenses:change",
+        "dataset_id": "company-04",
+        "period": "2025-01\u21922025-04",
+        "metric": "operating_expenses",
+        "value": 0,
+        "unit": "USD",
+        "formula": "operating_expenses(2025-04) - operating_expenses(2025-01)",
+        "source_row_ids": [
+          "company-04-2025-01",
+          "company-04-2025-04"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-01\u21922025-04:operating_expenses:percent_change",
+        "dataset_id": "company-04",
+        "period": "2025-01\u21922025-04",
+        "metric": "operating_expenses",
+        "value": 0,
+        "unit": "percent",
+        "formula": "(operating_expenses(2025-04) - operating_expenses(2025-01)) / operating_expenses(2025-01) * 100",
+        "source_row_ids": [
+          "company-04-2025-01",
+          "company-04-2025-04"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-01\u21922025-04:operating_profit:change",
+        "dataset_id": "company-04",
+        "period": "2025-01\u21922025-04",
+        "metric": "operating_profit",
+        "value": 16000,
+        "unit": "USD",
+        "formula": "operating_profit(2025-04) - operating_profit(2025-01)",
+        "source_row_ids": [
+          "company-04-2025-01",
+          "company-04-2025-04"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-01\u21922025-04:operating_profit:percent_change",
+        "dataset_id": "company-04",
+        "period": "2025-01\u21922025-04",
+        "metric": "operating_profit",
+        "value": 80,
+        "unit": "percent",
+        "formula": "(operating_profit(2025-04) - operating_profit(2025-01)) / operating_profit(2025-01) * 100",
+        "source_row_ids": [
+          "company-04-2025-01",
+          "company-04-2025-04"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-02\u21922025-05:revenue:change",
+        "dataset_id": "company-04",
+        "period": "2025-02\u21922025-05",
+        "metric": "revenue",
+        "value": 40000,
+        "unit": "USD",
+        "formula": "revenue(2025-05) - revenue(2025-02)",
+        "source_row_ids": [
+          "company-04-2025-02",
+          "company-04-2025-05"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-02\u21922025-05:revenue:percent_change",
+        "dataset_id": "company-04",
+        "period": "2025-02\u21922025-05",
+        "metric": "revenue",
+        "value": 36.363636,
+        "unit": "percent",
+        "formula": "(revenue(2025-05) - revenue(2025-02)) / revenue(2025-02) * 100",
+        "source_row_ids": [
+          "company-04-2025-02",
+          "company-04-2025-05"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-02\u21922025-05:cogs:change",
+        "dataset_id": "company-04",
+        "period": "2025-02\u21922025-05",
+        "metric": "cogs",
+        "value": 24000,
+        "unit": "USD",
+        "formula": "cogs(2025-05) - cogs(2025-02)",
+        "source_row_ids": [
+          "company-04-2025-02",
+          "company-04-2025-05"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-02\u21922025-05:cogs:percent_change",
+        "dataset_id": "company-04",
+        "period": "2025-02\u21922025-05",
+        "metric": "cogs",
+        "value": 36.363636,
+        "unit": "percent",
+        "formula": "(cogs(2025-05) - cogs(2025-02)) / cogs(2025-02) * 100",
+        "source_row_ids": [
+          "company-04-2025-02",
+          "company-04-2025-05"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-02\u21922025-05:operating_expenses:change",
+        "dataset_id": "company-04",
+        "period": "2025-02\u21922025-05",
+        "metric": "operating_expenses",
+        "value": 0,
+        "unit": "USD",
+        "formula": "operating_expenses(2025-05) - operating_expenses(2025-02)",
+        "source_row_ids": [
+          "company-04-2025-02",
+          "company-04-2025-05"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-02\u21922025-05:operating_expenses:percent_change",
+        "dataset_id": "company-04",
+        "period": "2025-02\u21922025-05",
+        "metric": "operating_expenses",
+        "value": 0,
+        "unit": "percent",
+        "formula": "(operating_expenses(2025-05) - operating_expenses(2025-02)) / operating_expenses(2025-02) * 100",
+        "source_row_ids": [
+          "company-04-2025-02",
+          "company-04-2025-05"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-02\u21922025-05:operating_profit:change",
+        "dataset_id": "company-04",
+        "period": "2025-02\u21922025-05",
+        "metric": "operating_profit",
+        "value": 16000,
+        "unit": "USD",
+        "formula": "operating_profit(2025-05) - operating_profit(2025-02)",
+        "source_row_ids": [
+          "company-04-2025-02",
+          "company-04-2025-05"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-02\u21922025-05:operating_profit:percent_change",
+        "dataset_id": "company-04",
+        "period": "2025-02\u21922025-05",
+        "metric": "operating_profit",
+        "value": 66.666667,
+        "unit": "percent",
+        "formula": "(operating_profit(2025-05) - operating_profit(2025-02)) / operating_profit(2025-02) * 100",
+        "source_row_ids": [
+          "company-04-2025-02",
+          "company-04-2025-05"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-03\u21922025-06:revenue:change",
+        "dataset_id": "company-04",
+        "period": "2025-03\u21922025-06",
+        "metric": "revenue",
+        "value": 40000,
+        "unit": "USD",
+        "formula": "revenue(2025-06) - revenue(2025-03)",
+        "source_row_ids": [
+          "company-04-2025-03",
+          "company-04-2025-06"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-03\u21922025-06:revenue:percent_change",
+        "dataset_id": "company-04",
+        "period": "2025-03\u21922025-06",
+        "metric": "revenue",
+        "value": 33.333333,
+        "unit": "percent",
+        "formula": "(revenue(2025-06) - revenue(2025-03)) / revenue(2025-03) * 100",
+        "source_row_ids": [
+          "company-04-2025-03",
+          "company-04-2025-06"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-03\u21922025-06:cogs:change",
+        "dataset_id": "company-04",
+        "period": "2025-03\u21922025-06",
+        "metric": "cogs",
+        "value": 24000,
+        "unit": "USD",
+        "formula": "cogs(2025-06) - cogs(2025-03)",
+        "source_row_ids": [
+          "company-04-2025-03",
+          "company-04-2025-06"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-03\u21922025-06:cogs:percent_change",
+        "dataset_id": "company-04",
+        "period": "2025-03\u21922025-06",
+        "metric": "cogs",
+        "value": 33.333333,
+        "unit": "percent",
+        "formula": "(cogs(2025-06) - cogs(2025-03)) / cogs(2025-03) * 100",
+        "source_row_ids": [
+          "company-04-2025-03",
+          "company-04-2025-06"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-03\u21922025-06:operating_expenses:change",
+        "dataset_id": "company-04",
+        "period": "2025-03\u21922025-06",
+        "metric": "operating_expenses",
+        "value": 0,
+        "unit": "USD",
+        "formula": "operating_expenses(2025-06) - operating_expenses(2025-03)",
+        "source_row_ids": [
+          "company-04-2025-03",
+          "company-04-2025-06"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-03\u21922025-06:operating_expenses:percent_change",
+        "dataset_id": "company-04",
+        "period": "2025-03\u21922025-06",
+        "metric": "operating_expenses",
+        "value": 0,
+        "unit": "percent",
+        "formula": "(operating_expenses(2025-06) - operating_expenses(2025-03)) / operating_expenses(2025-03) * 100",
+        "source_row_ids": [
+          "company-04-2025-03",
+          "company-04-2025-06"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-03\u21922025-06:operating_profit:change",
+        "dataset_id": "company-04",
+        "period": "2025-03\u21922025-06",
+        "metric": "operating_profit",
+        "value": 16000,
+        "unit": "USD",
+        "formula": "operating_profit(2025-06) - operating_profit(2025-03)",
+        "source_row_ids": [
+          "company-04-2025-03",
+          "company-04-2025-06"
+        ],
+        "reason": null
+      },
+      {
+        "id": "company-04:2025-03\u21922025-06:operating_profit:percent_change",
+        "dataset_id": "company-04",
+        "period": "2025-03\u21922025-06",
+        "metric": "operating_profit",
+        "value": 57.142857,
+        "unit": "percent",
+        "formula": "(operating_profit(2025-06) - operating_profit(2025-03)) / operating_profit(2025-03) * 100",
+        "source_row_ids": [
+          "company-04-2025-03",
+          "company-04-2025-06"
+        ],
+        "reason": null
+      }
+    ],
+    "provider": "openai",
+    "model": "gpt-5.6-luna",
+    "elapsed_ms": 12107,
+    "usage": {
+      "input_tokens": 8705,
+      "output_tokens": 1123
+    },
+    "mode": "live",
+    "created_at": "2026-09-21T00:03:48.248Z",
+    "validation": {
+      "references_valid": true,
+      "semantic_review": "not_reviewed"
+    }
+  },
+  "execution": "success",
+  "evidence_checks": [
+    {
+      "id": "company-04:2025-01\u21922025-04:revenue:change",
+      "match": true
+    },
+    {
+      "id": "company-04:2025-02\u21922025-05:revenue:change",
+      "match": true
+    },
+    {
+      "id": "company-04:2025-03\u21922025-06:revenue:change",
+      "match": true
+    }
+  ],
+  "evidence_coverage": true,
+  "elapsed_seconds": 12.12
+}

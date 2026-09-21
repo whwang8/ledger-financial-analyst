@@ -1,0 +1,43 @@
+{
+  "id": "company-03",
+  "name": "Northline Supply",
+  "currency": "USD",
+  "synthetic": true,
+  "rows": [
+    {
+      "row_id": "company-03-2025-01",
+      "month": "2025-01",
+      "revenue": 80000,
+      "cogs": 40000,
+      "operating_expenses": 16000
+    },
+    {
+      "row_id": "company-03-2025-02",
+      "month": "2025-02",
+      "revenue": 90000,
+      "cogs": 45000,
+      "operating_expenses": 16000
+    },
+    {
+      "row_id": "company-03-2025-03",
+      "month": "2025-03",
+      "revenue": 100000,
+      "cogs": 50000,
+      "operating_expenses": 16000
+    },
+    {
+      "row_id": "company-03-2025-04",
+      "month": "2025-04",
+      "revenue": 110000,
+      "cogs": 55000,
+      "operating_expenses": 16000
+    },
+    {
+      "row_id": "company-03-2025-06",
+      "month": "2025-06",
+      "revenue": 130000,
+      "cogs": 65000,
+      "operating_expenses": 16000
+    }
+  ]
+}
